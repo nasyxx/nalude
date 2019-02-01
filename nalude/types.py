@@ -28,50 +28,24 @@ Excited without bugs::
     |  ___|______|______|______|______|______|____
 
 author   : Nasy https://nasy.moe
-date     : Jan 30, 2019
+date     : Jan 31, 2019
 email    : Nasy <nasyxx+nalude@gmail.com>
-filename : __init__.py
+filename : types.py
 project  : nalude
 license  : LGPL-3.0+
 
 There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
-__version__ = "0.1.0"
-# Local Packages
-from .nalude import (o, drop, flip, head, init, last, not_, null,
-                     span, tail, take, cycle, foldl, foldr, break_,
-                     foldl1, foldr1, repeat, iterate, product,
-                     splitat, dropwhile, replicate, takewhile,)
+# Standard Library
+from typing import TypeVar, Callable, Generator
 
-# Folds and Traversals
-assert foldl
-assert foldl1
-assert foldr
-assert foldr1
-assert product
+a = TypeVar("a")
+b = TypeVar("b")
+c = TypeVar("c")
+t = TypeVar("t")
+G = Generator[a, None, None]
+Num = TypeVar("Num", int, float, complex)
+Predicate = Callable[[a], bool]
 
-# Lists
-assert head
-assert last
-assert init
-assert tail
-assert null
-assert iterate
-assert repeat
-assert replicate
-assert cycle
-assert take
-assert drop
-assert splitat
-assert takewhile
-assert dropwhile
-assert span
-assert break_
-
-# Miscellaneous
-assert flip
-assert o
-
-# Specials
-assert not_
+__all__ = ["a", "b", "c", "t", "G", "Num", "Predicate"]

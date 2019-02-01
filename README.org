@@ -1,0 +1,128 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t title:t toc:t todo:nil |:t
+#+TITLE: Nalude
+#+DATE: <2019-01-30 Wed>
+#+AUTHOR: Nasy
+#+EMAIL: nasyxx+nalude@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1.91 (Org mode 9.1.9)
+
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+* Prologue
+
+I like Haskell, also hope some of basic functions in Haskell can be used in Python.
+
+Wish you enjoy coding.
+
+* TODO Nalude
+
+Nalude is a standard module, which is inspired by Haskell's Prelude.  Thus, nalude is also a
+library of functional programming.
+
+Nalude doesn't specifically distinguish between Applicative's or monadic function, since they are
+not well differentiated in the basic structure of Python.
+
+The following functions, Nalude tries to implement:
+
+1. Folds and Traversals
+2. Lists
+3. Miscellaneous
+4. Specials
+5. Strings
+6. Tuples
+7. Zip and Unzip
+
+* NEXT Structure of Functions
+
+** HOLD [-] Folds and Traversals [5/7]
+
+    - [X] foldr :: Right-associative fold of a sequence.
+    - [X] foldl :: Left-associative fold of a sequence.  The same as ~reduce~
+    - [X] foldr1 :: A variant of foldr without base case.
+    - [X] foldl1 :: A variant of foldl without base case.
+    - [X] product :: Computes the product of the numbers.
+    - [ ] traverse :: Map each element of a structure to an action, evaluate these actions from left
+                      to right, and collect the results.
+    - [ ] sequence :: Evaluate each actions in the structure from left to right, and collect the
+                      results.
+** DONE [X] Lists [5/5]
+CLOSED: [2019-02-01 Fri 21:55]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2019-02-01 Fri 21:55]
+:END:
+
+    - [X] head :: Extract the first element of a sequence.
+    - [X] last :: Extract the last element of a sequence.
+    - [X] null :: Test whether the sequence is empty.
+    - [X] Infinite lists [4/4]
+
+        + [X] iterate :: Yield a tuple of repeated applications of f to x.
+        + [X] repeat :: Repeat x.
+        + [X] replicate :: Return a list of length n with x the value of every element.
+        + [X] cycle :: Tie a sequence to infinite circuler one.
+
+    - [X] Sublists [9/9]
+
+        + [X] tail :: Extract the elements after the head of a list.
+        + [X] init :: Extract all the elements of a sequence except the last one.
+        + [X] take :: Return the first n elements of sequence xs.
+        + [X] drop :: Return the remaining elements of xs after the first n elements.
+        + [X] splitat :: Return a tuple where the first element is xs prefix of length n and second
+                         element is the remainder of the sequence xs.
+        + [X] takewhile :: Return the longest prefix of xs of elements that satisfy predicate p.
+        + [X] dropwhile :: Returns the suffix remaining after takewhile(p, xs).
+        + [X] span :: Equal to (takewhile(p, xs), dropwhile(p, xs)).
+        + [X] break_ :: Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).
+
+** NEXT [-] Miscellaneous [2/6]
+:LOGBOOK:
+- State "NEXT"       from "TODO"       [2019-02-01 Fri 21:56]
+:END:
+
+    - [ ] id_ ::
+    - [ ] const ::
+    - [X] o :: (.) Function composition
+    - [X] flip :: Flip takes its two arguments into the reverse order of f.
+    - [ ] until ::
+    - [ ] seq ::
+
+** TODO [ ] String [0/4]
+
+    - [ ] lines ::
+    - [ ] unlines ::
+    - [ ] words ::
+    - [ ] unwords ::
+
+** TODO [-] Specials [1/5]
+
+    - [X] not_ :: Boolean "not".
+    - [ ] all_ ::
+    - [ ] any_ ::
+    - [ ] concat ::
+    - [ ] concatmap ::
+
+** TODO [ ] Tuples [0/4]
+
+    - [ ] fst :: Extract the first component of a tuple.
+    - [ ] snd :: Extract the second component of a tuple.
+    - [ ] curry :: Converts an uncurried function to a curried function.
+    - [ ] uncurry :: Converts a curried function to a function on pairs.
+
+** TODO [ ] Zip and Unzip [0/3]
+
+    - [ ] zipwith ::
+    - [ ] unzip ::
+    - [ ] unzipwith ::
+
+* TODO Get Start
+
+** TODO Install
+
+** TODO Usage
+
+* TODO Epoligue

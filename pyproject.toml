@@ -38,7 +38,7 @@ use_parentheses = true
 order_by_type = true
 
 import_heading_typdef = "Type Definition"
-known_typdef = ["typing", "typdefs"]
+known_typdef = ["typing", "typdefs", "types"]
 
 import_heading_stdlib = "Standard Library"
 
