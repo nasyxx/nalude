@@ -38,7 +38,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
 # Standard Library
-from typing import Tuple, Callable, Sequence, Generator
+from typing import List, Tuple, Callable, Sequence, Generator
 from functools import reduce
 
 # Local Packages
@@ -49,37 +49,46 @@ from .types import G, Num, Predicate, a, b, c
 # ----------------------------------------------------------------------
 
 
-def foldl(func: Callable[[b, a], b], init: b, t: Sequence[a]) -> b:
+def foldl(f: Callable[[b, a], b], init: b, t: Sequence[a]) -> b:
     """Left-associative fold of a sequence."""
-    return reduce(func, t, init)
+    return reduce(f, t, init)
 
 
-def foldr(func: Callable[[a, b], b], init: b, t: Sequence[a]) -> b:
+def foldr(f: Callable[[a, b], b], init: b, t: Sequence[a]) -> b:
     """Right-associative fold of a sequence."""
-    return reduce(flip(func), reversed(t), init)
+    return reduce(flip(f), reversed(t), init)
 
 
-def foldl1(func: Callable[[a, a], a], t: Sequence[a]) -> a:
+def foldl1(f: Callable[[a, a], a], t: Sequence[a]) -> a:
     """Left-associative fold of a sequence.
 
     This is avariant of foldl without base case.
     """
     t_ = iter(t)
-    return reduce(func, t_, next(t_))
+    try:
+        return reduce(f, t_, next(t_))
+    except StopIteration:
+        raise IndexError("Sequence is Empty")
 
 
-def foldr1(func: Callable[[a, a], a], t: Sequence[a]) -> a:
+def foldr1(f: Callable[[a, a], a], t: Sequence[a]) -> a:
     """Right-associative fold of a sequence.
 
     This is a variant of foldr without base case.
     """
     t_ = iter(reversed(t))
-    return reduce(func, t_, next(t_))
+    try:
+        return reduce(f, t_, next(t_))
+    except StopIteration:
+        raise IndexError("Sequence is Empty")
 
 
 def product(nums: Sequence[Num]) -> Num:
     """Computes the product of the numbers."""
-    return foldl1(lambda b, a: a * b, nums)
+    try:
+        return foldl1(lambda b, a: a * b, nums)
+    except IndexError:
+        raise IndexError("Numbers are empty")
 
 
 # ----------------------------------------------------------------------
@@ -234,12 +243,14 @@ def break_(p: Predicate, xs: Sequence[a]) -> Tuple[G, G]:
 # ----------------------------------------------------------------------
 
 
-def flip(f: Callable[[a, b], c]) -> Callable[[b, a], c]:
-    """Flip takes its two arguments into the reverse order of f.
+def id_(x: a) -> a:
+    """Identity function."""
+    return x
 
-    >>> flip(f)(b, a) == f(a, b)
-    """
-    return lambda b_, a_: f(a_, b_)
+
+def const(x: a, _: b) -> a:
+    """Evaluates to x for all inputs."""
+    return x
 
 
 def o(f1: Callable[[b], c], f2: Callable[[a], b]) -> Callable[[a], c]:
@@ -248,6 +259,45 @@ def o(f1: Callable[[b], c], f2: Callable[[a], b]) -> Callable[[a], c]:
     >>> o(f1, f2)(a) == f1(f2(a))
     """
     return lambda a_: f1(f2(a_))
+
+
+def flip(f: Callable[[a, b], c]) -> Callable[[b, a], c]:
+    """Flip takes its two arguments into the reverse order of f.
+
+    >>> flip(f)(b, a) == f(a, b)
+    """
+    return lambda b_, a_: f(a_, b_)
+
+
+def until(p: Predicate, f: Callable[[a], a], x: a) -> a:
+    """Yields the result of applying f until p holds."""
+    return p(x) and x or until(p, f, f(x))
+
+
+# ----------------------------------------------------------------------
+# Strings
+# ----------------------------------------------------------------------
+
+
+def lines(s: str) -> List[str]:
+    """Break up a string into a list of strings at newline characters."""
+    return s.splitlines()
+
+
+def unlines(xs: Sequence[str]) -> str:
+    """The inverse operation of lines, append a newline to each."""
+    return "\n".join(xs) + "\n"
+
+
+def words(s: str) -> List[str]:
+    """Breaks a string up into a list of words, which were delimited by white
+    space."""
+    return s.split()
+
+
+def unwords(xs: Sequence[str]) -> str:
+    """The inverse operation of words, join words with space."""
+    return " ".join(xs)
 
 
 # ----------------------------------------------------------------------
@@ -263,3 +313,81 @@ def not_(f: Callable[..., bool]) -> Callable[..., bool]:
         return f(*args, **kwds)
 
     return _wrap
+
+
+def all_(p: Predicate, xs: Sequence[a]) -> bool:
+    """Determine whether all elements of the structure satisfy the p."""
+    return all(map(p, xs))
+
+
+def any_(p: Predicate, xs: Sequence[a]) -> bool:
+    """Determine whether any element of the structure satisfies the p."""
+    return any(map(p, xs))
+
+
+def concat(xss: Sequence[Sequence[a]]) -> G:
+    """The concatenation of all the elements of a container of Sequences."""
+    for xs in xss:
+        for x in xs:
+            yield x
+
+
+def concatmap(
+    f: Callable[[Sequence[a]], Sequence[b]], xss: Sequence[Sequence[a]]
+) -> Generator[b, None, None]:
+    """Map a function over all the elements of a container and concatenate the
+    resulting lists."""
+    for xs in xss:
+        for x in f(xs):
+            yield x
+
+
+# ----------------------------------------------------------------------
+# Tuples
+# ----------------------------------------------------------------------
+
+
+def fst(t: Tuple[a, b]) -> a:
+    """Extract the first component of a tuple."""
+    return t[0]
+
+
+def snd(t: Tuple[a, b]) -> b:
+    """Extract the second component of a tuple."""
+    return t[1]
+
+
+def curry(f: Callable[[Tuple[a, b]], c], a_: a, b_: b) -> c:
+    """Converts an uncurried function to a curried function."""
+    return f((a_, b_))
+
+
+def uncurry(f: Callable[[a, b], c], ab: Tuple[a, b]) -> c:
+    """Converts a curried function to a function on pairs."""
+    a_, b_ = ab
+    return f(a_, b_)
+
+
+# ----------------------------------------------------------------------
+# Zip and Unzip
+# ----------------------------------------------------------------------
+
+
+def zipwith(
+    f: Callable[[a], c], *seqs: Sequence[a]
+) -> Generator[c, None, None]:
+    """Zipwith is map(f, zip), but f accept separate args instead of tuple"""
+    for zseq in zip(*seqs):
+        yield f(*zseq)
+
+
+def unzip(pairs: Sequence[Tuple[a, ...]]) -> Tuple[Sequence[a], ...]:
+    """Transform a sequence of pairs into a tuple of sequence.
+
+    Note: Not lazy."""
+    pairs = list(pairs)
+    if pairs:
+        return tuple(
+            [pair[i] for pair in pairs] for i in range(len(head(pairs)))
+        )
+    return tuple()

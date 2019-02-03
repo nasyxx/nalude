@@ -39,39 +39,65 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 """
 __version__ = "0.1.0"
 # Local Packages
-from .nalude import (o, drop, flip, head, init, last, not_, null,
-                     span, tail, take, cycle, foldl, foldr, break_,
-                     foldl1, foldr1, repeat, iterate, product,
-                     splitat, dropwhile, replicate, takewhile,)
+from .nalude import (o, fst, id_, snd, all_, any_, drop, flip, head, init,
+                     last, not_, null, span, tail, take, const, curry,
+                     cycle, foldl, foldr, lines, until, unzip, words,
+                     break_, concat, foldl1, foldr1, repeat, iterate,
+                     product, splitat, uncurry, unlines, unwords, zipwith,
+                     concatmap, dropwhile, replicate, takewhile,)
 
-# Folds and Traversals
-assert foldl
-assert foldl1
-assert foldr
-assert foldr1
-assert product
+if __name__ == "__main__":
+    # Folds and Traversals
+    assert foldl
+    assert foldl1
+    assert foldr
+    assert foldr1
+    assert product
 
-# Lists
-assert head
-assert last
-assert init
-assert tail
-assert null
-assert iterate
-assert repeat
-assert replicate
-assert cycle
-assert take
-assert drop
-assert splitat
-assert takewhile
-assert dropwhile
-assert span
-assert break_
+    # Lists
+    assert head
+    assert last
+    assert init
+    assert tail
+    assert null
+    assert iterate
+    assert repeat
+    assert replicate
+    assert cycle
+    assert take
+    assert drop
+    assert splitat
+    assert takewhile
+    assert dropwhile
+    assert span
+    assert break_
 
-# Miscellaneous
-assert flip
-assert o
+    # Miscellaneous
+    assert id_
+    assert const
+    assert flip
+    assert o
+    assert until
 
-# Specials
-assert not_
+    # String
+    assert lines
+    assert unlines
+    assert words
+    assert unwords
+
+    # Specials
+    assert not_
+    assert all_
+    assert any_
+    assert concat
+    assert concatmap
+
+    # TUple
+    assert fst
+    assert snd
+    assert curry
+    assert uncurry
+
+    # Zip and Unzip
+    assert zipwith
+    assert unzip
