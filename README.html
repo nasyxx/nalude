@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-01 Fri 22:03 -->
+<!-- 2019-02-03 Sun 22:02 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nalude</title>
@@ -252,32 +252,39 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf294653">1. Prologue</a></li>
-<li><a href="#orgc13bca6">2. Nalude</a></li>
-<li><a href="#org164ea4c">3. Structure of Functions</a>
+<li><a href="#orgf1ad1f7">1. Prologue</a></li>
+<li><a href="#orgfa6d8a9">2. Nalude</a></li>
+<li><a href="#org6b889bc">3. Structure of Functions</a>
 <ul>
-<li><a href="#org70149e5">3.1. [-] Folds and Traversals <code>[5/7]</code></a></li>
-<li><a href="#orga1c7a5e">3.2. [X] Lists <code>[5/5]</code></a></li>
-<li><a href="#orga36b723">3.3. [-] Miscellaneous <code>[2/6]</code></a></li>
-<li><a href="#org6f46f45">3.4. [ ] String <code>[0/4]</code></a></li>
-<li><a href="#orgbd65320">3.5. [-] Specials <code>[1/5]</code></a></li>
-<li><a href="#orgd0c80c4">3.6. [ ] Tuples <code>[0/4]</code></a></li>
-<li><a href="#orgf0cd360">3.7. [ ] Zip and Unzip <code>[0/3]</code></a></li>
+<li><a href="#org06ef17a">3.1. Folds and Traversals</a></li>
+<li><a href="#org91d0c1a">3.2. Lists</a></li>
+<li><a href="#orgd471f4c">3.3. Miscellaneous</a></li>
+<li><a href="#org801b1e2">3.4. String</a></li>
+<li><a href="#org7e88952">3.5. Specials</a></li>
+<li><a href="#orgdab0e61">3.6. Tuples</a></li>
+<li><a href="#org0784cdc">3.7. Zip and Unzip</a></li>
 </ul>
 </li>
-<li><a href="#org3e38ade">4. Get Start</a>
+<li><a href="#org9f2397d">4. Get Start</a>
 <ul>
-<li><a href="#orgbfd1782">4.1. Install</a></li>
-<li><a href="#org1a8b12f">4.2. Usage</a></li>
+<li><a href="#orgfda31a9">4.1. Install</a></li>
 </ul>
 </li>
-<li><a href="#orgcc2719f">5. Epoligue</a></li>
+<li><a href="#orgf5b4da6">5. Epoligue</a>
+<ul>
+<li><a href="#orgf573921">5.1. History</a>
+<ul>
+<li><a href="#org703844c">5.1.1. Version 0.1.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgf294653" class="outline-2">
-<h2 id="orgf294653"><span class="section-number-2">1</span> Prologue</h2>
+<div id="outline-container-orgf1ad1f7" class="outline-2">
+<h2 id="orgf1ad1f7"><span class="section-number-2">1</span> Prologue</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I like Haskell, also hope some of basic functions in Haskell can be used in Python.
@@ -289,8 +296,8 @@ Wish you enjoy coding.
 </div>
 </div>
 
-<div id="outline-container-orgc13bca6" class="outline-2">
-<h2 id="orgc13bca6"><span class="section-number-2">2</span> Nalude</h2>
+<div id="outline-container-orgfa6d8a9" class="outline-2">
+<h2 id="orgfa6d8a9"><span class="section-number-2">2</span> Nalude</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Nalude is a standard module, which is inspired by Haskell's Prelude.  Thus, nalude is also a
@@ -318,155 +325,162 @@ The following functions, Nalude tries to implement:
 </div>
 </div>
 
-<div id="outline-container-org164ea4c" class="outline-2">
-<h2 id="org164ea4c"><span class="section-number-2">3</span> Structure of Functions</h2>
+<div id="outline-container-org6b889bc" class="outline-2">
+<h2 id="org6b889bc"><span class="section-number-2">3</span> Structure of Functions</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org70149e5" class="outline-3">
-<h3 id="org70149e5"><span class="section-number-3">3.1</span> [-] Folds and Traversals <code>[5/7]</code></h3>
+<div id="outline-container-org06ef17a" class="outline-3">
+<h3 id="org06ef17a"><span class="section-number-3">3.1</span> Folds and Traversals</h3>
 <div class="outline-text-3" id="text-3-1">
 <dl class="org-dl">
-<dt class="on"><input type='checkbox' checked='checked' /> foldr</dt><dd>Right-associative fold of a sequence.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> foldl</dt><dd>Left-associative fold of a sequence.  The same as <code>reduce</code></dd>
-<dt class="on"><input type='checkbox' checked='checked' /> foldr1</dt><dd>A variant of foldr without base case.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> foldl1</dt><dd>A variant of foldl without base case.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> product</dt><dd>Computes the product of the numbers.</dd>
-<dt class="off"><input type='checkbox' /> traverse</dt><dd>Map each element of a structure to an action, evaluate these actions from left
+<dt>foldr(f: Callable[[b, a], b], init: b, t: Sequence[a]) -&gt; b~</dt><dd>Right-associative fold of a
+sequence.</dd>
+<dt>foldl(f, init, t)</dt><dd>Left-associative fold of a sequence.  The same as <code>reduce</code>.</dd>
+<dt>foldr1(f, t)</dt><dd>A variant of foldr without base case.</dd>
+<dt>foldl1(f, t)</dt><dd>A variant of foldl without base case.</dd>
+<dt>product(nums)</dt><dd>Computes the product of the numbers.</dd>
+<dt>(HELP WANTED) traverse</dt><dd>Map each element of a structure to an action, evaluate these actions from left
 to right, and collect the results.</dd>
-<dt class="off"><input type='checkbox' /> sequence</dt><dd>Evaluate each actions in the structure from left to right, and collect the
+<dt>(HELP WANTED) sequence</dt><dd>Evaluate each actions in the structure from left to right, and collect the
 results.</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orga1c7a5e" class="outline-3">
-<h3 id="orga1c7a5e"><span class="section-number-3">3.2</span> [X] Lists <code>[5/5]</code></h3>
+<div id="outline-container-org91d0c1a" class="outline-3">
+<h3 id="org91d0c1a"><span class="section-number-3">3.2</span> Lists</h3>
 <div class="outline-text-3" id="text-3-2">
 <dl class="org-dl">
-<dt class="on"><input type='checkbox' checked='checked' /> head</dt><dd>Extract the first element of a sequence.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> last</dt><dd>Extract the last element of a sequence.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> null</dt><dd>Test whether the sequence is empty.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> (no term)</dt><dd>Infinite lists <code>[4/4]</code>
+<dt>head(xs)</dt><dd>Extract the first element of a sequence.</dd>
+<dt>last(xs)</dt><dd>Extract the last element of a sequence.</dd>
+<dt>null(xs)</dt><dd>Test whether the sequence is empty.</dd>
+<dt>(no term)</dt><dd>Infinite lists
 
 <dl class="org-dl">
-<dt class="on"><input type='checkbox' checked='checked' /> iterate</dt><dd>Yield a tuple of repeated applications of f to x.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> repeat</dt><dd>Repeat x.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> replicate</dt><dd>Return a list of length n with x the value of every element.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> cycle</dt><dd>Tie a sequence to infinite circuler one.</dd>
+<dt>iterate(f, x)</dt><dd>Yield a tuple of repeated applications of f to x.</dd>
+<dt>repeat(x)</dt><dd>Repeat x.</dd>
+<dt>replicate(n, x)</dt><dd>Return a list of length n with x the value of every element.</dd>
+<dt>cycle(xs)</dt><dd>Tie a sequence to infinite circuler one.</dd>
 </dl></dd>
 
-<dt class="on"><input type='checkbox' checked='checked' /> (no term)</dt><dd>Sublists <code>[9/9]</code>
+<dt>(no term)</dt><dd>Sublists
 
 <dl class="org-dl">
-<dt class="on"><input type='checkbox' checked='checked' /> tail</dt><dd>Extract the elements after the head of a list.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> init</dt><dd>Extract all the elements of a sequence except the last one.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> take</dt><dd>Return the first n elements of sequence xs.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> drop</dt><dd>Return the remaining elements of xs after the first n elements.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> splitat</dt><dd>Return a tuple where the first element is xs prefix of length n and second
-element is the remainder of the sequence xs.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> takewhile</dt><dd>Return the longest prefix of xs of elements that satisfy predicate p.</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> dropwhile</dt><dd>Returns the suffix remaining after takewhile(p, xs).</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> span</dt><dd>Equal to (takewhile(p, xs), dropwhile(p, xs)).</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> break_</dt><dd>Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).</dd>
+<dt>tail(xs)</dt><dd>Extract the elements after the head of a list.</dd>
+<dt>init(xs)</dt><dd>Extract all the elements of a sequence except the last one.</dd>
+<dt>take(n, xs)</dt><dd>Return the first n elements of sequence xs.</dd>
+<dt>drop(n, xs)</dt><dd>Return the remaining elements of xs after the first n elements.</dd>
+<dt>splitat(n, xs)</dt><dd>Return a tuple where the first element is xs prefix of length n and
+second element is the remainder of the sequence xs.</dd>
+<dt>takewhile(p, xs)</dt><dd>Return the longest prefix of xs of elements that satisfy predicate p.</dd>
+<dt>dropwhile(p, xs)</dt><dd>Returns the suffix remaining after takewhile(p, xs).</dd>
+<dt>span(p, xs)</dt><dd>Equal to (takewhile(p, xs), dropwhile(p, xs)).</dd>
+<dt>break_(p, xs)</dt><dd>Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).</dd>
 </dl></dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-orga36b723" class="outline-3">
-<h3 id="orga36b723"><span class="section-number-3">3.3</span> [-] Miscellaneous <code>[2/6]</code></h3>
+<div id="outline-container-orgd471f4c" class="outline-3">
+<h3 id="orgd471f4c"><span class="section-number-3">3.3</span> Miscellaneous</h3>
 <div class="outline-text-3" id="text-3-3">
 <dl class="org-dl">
-<dt class="off"><input type='checkbox' /> id_</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> const</dt><dd></dd>
-
-<dt class="on"><input type='checkbox' checked='checked' /> o</dt><dd>(.) Function composition</dd>
-<dt class="on"><input type='checkbox' checked='checked' /> flip</dt><dd>Flip takes its two arguments into the reverse order of f.</dd>
-<dt class="off"><input type='checkbox' /> until</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> seq</dt><dd></dd>
+<dt>id_(x)</dt><dd>Identity function.</dd>
+<dt>const(x, _)</dt><dd>Evaluates to x for all inputs.</dd>
+<dt>o(f1, f2)</dt><dd>(.) Function composition</dd>
+<dt>flip(f)</dt><dd>Flip takes its two arguments into the reverse order of f.</dd>
+<dt>until(p, f, x)</dt><dd>Yield the result of applying f until p holds.</dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-org6f46f45" class="outline-3">
-<h3 id="org6f46f45"><span class="section-number-3">3.4</span> [ ] String <code>[0/4]</code></h3>
+<div id="outline-container-org801b1e2" class="outline-3">
+<h3 id="org801b1e2"><span class="section-number-3">3.4</span> String</h3>
 <div class="outline-text-3" id="text-3-4">
 <dl class="org-dl">
-<dt class="off"><input type='checkbox' /> lines</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> unlines</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> words</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> unwords</dt><dd></dd>
+<dt>lines(s)</dt><dd>Break up a string into a list of strings at newline characters.</dd>
+<dt>unlines(xs)</dt><dd>The inverse operation of lines, append a newline to each.</dd>
+<dt>words(s)</dt><dd>Breaks a string up into a list of words, which were delimited by white space.</dd>
+<dt>unwords(xs)</dt><dd>The inverse operation of words, join words with space.</dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-orgbd65320" class="outline-3">
-<h3 id="orgbd65320"><span class="section-number-3">3.5</span> [-] Specials <code>[1/5]</code></h3>
+<div id="outline-container-org7e88952" class="outline-3">
+<h3 id="org7e88952"><span class="section-number-3">3.5</span> Specials</h3>
 <div class="outline-text-3" id="text-3-5">
 <dl class="org-dl">
-<dt class="on"><input type='checkbox' checked='checked' /> not_</dt><dd>Boolean "not".</dd>
-<dt class="off"><input type='checkbox' /> all_</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> any_</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> concat</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> concatmap</dt><dd></dd>
+<dt>not_(f)</dt><dd>Boolean "not".</dd>
+<dt>all_(p, xs)</dt><dd>Determine whether all elements of the structure satisfy the p.</dd>
+<dt>any_(p, xs)</dt><dd>Determine whether sny elements of the structure satisfies the p.</dd>
+<dt>concat(xss)</dt><dd>The concatenation of all the elements of a container of Sequences.</dd>
+<dt>concatmap(f, xss)</dt><dd>Map a function over all the elements of a container and concatenate the
+resulting lists.</dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-orgd0c80c4" class="outline-3">
-<h3 id="orgd0c80c4"><span class="section-number-3">3.6</span> [ ] Tuples <code>[0/4]</code></h3>
+<div id="outline-container-orgdab0e61" class="outline-3">
+<h3 id="orgdab0e61"><span class="section-number-3">3.6</span> Tuples</h3>
 <div class="outline-text-3" id="text-3-6">
 <dl class="org-dl">
-<dt class="off"><input type='checkbox' /> fst</dt><dd>Extract the first component of a tuple.</dd>
-<dt class="off"><input type='checkbox' /> snd</dt><dd>Extract the second component of a tuple.</dd>
-<dt class="off"><input type='checkbox' /> curry</dt><dd>Converts an uncurried function to a curried function.</dd>
-<dt class="off"><input type='checkbox' /> uncurry</dt><dd>Converts a curried function to a function on pairs.</dd>
+<dt>fst(t)</dt><dd>Extract the first component of a tuple.</dd>
+<dt>snd(t)</dt><dd>Extract the second component of a tuple.</dd>
+<dt>curry(f, a, b)</dt><dd>Converts an uncurried function to a curried function.</dd>
+<dt>uncurry(f, ab@(a, b))</dt><dd>Converts a curried function to a function on pairs.</dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-orgf0cd360" class="outline-3">
-<h3 id="orgf0cd360"><span class="section-number-3">3.7</span> [ ] Zip and Unzip <code>[0/3]</code></h3>
+<div id="outline-container-org0784cdc" class="outline-3">
+<h3 id="org0784cdc"><span class="section-number-3">3.7</span> Zip and Unzip</h3>
 <div class="outline-text-3" id="text-3-7">
 <dl class="org-dl">
-<dt class="off"><input type='checkbox' /> zipwith</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> unzip</dt><dd></dd>
-
-<dt class="off"><input type='checkbox' /> unzipwith</dt><dd></dd>
+<dt>zipwith(f, *seqs)</dt><dd>Zipwith is map(f, zip), but f accept separate args instead of tuple</dd>
+<dt>unzip(pairs)</dt><dd>Transform a sequence of pairs into a tuple of sequence. (Not lazy)</dd>
 </dl>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3e38ade" class="outline-2">
-<h2 id="org3e38ade"><span class="section-number-2">4</span> Get Start</h2>
+<div id="outline-container-org9f2397d" class="outline-2">
+<h2 id="org9f2397d"><span class="section-number-2">4</span> Get Start</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgbfd1782" class="outline-3">
-<h3 id="orgbfd1782"><span class="section-number-3">4.1</span> Install</h3>
+<div id="outline-container-orgfda31a9" class="outline-3">
+<h3 id="orgfda31a9"><span class="section-number-3">4.1</span> Install</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-zsh">pip install nalude
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org1a8b12f" class="outline-3">
-<h3 id="org1a8b12f"><span class="section-number-3">4.2</span> Usage</h3>
+<div id="outline-container-orgf5b4da6" class="outline-2">
+<h2 id="orgf5b4da6"><span class="section-number-2">5</span> Epoligue</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgf573921" class="outline-3">
+<h3 id="orgf573921"><span class="section-number-3">5.1</span> History</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org703844c" class="outline-4">
+<h4 id="org703844c"><span class="section-number-4">5.1.1</span> Version 0.1.0</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<dl class="org-dl">
+<dt>Data</dt><dd><span class="timestamp-wrapper"><span class="timestamp">&lt;Sun Feb 03, 2019&gt;</span></span></dd>
+<dt>Commemorate Version</dt><dd>First Release.</dd>
+</dl>
 </div>
 </div>
-
-<div id="outline-container-orgcc2719f" class="outline-2">
-<h2 id="orgcc2719f"><span class="section-number-2">5</span> Epoligue</h2>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-01-30 Wed 00:00</p>
 <p class="author">Author: Nasy</p>
-<p class="date">Created: 2019-02-01 Fri 22:03</p>
+<p class="date">Created: 2019-02-03 Sun 22:02</p>
 <p class="validation"></p>
 </div>
 </body>

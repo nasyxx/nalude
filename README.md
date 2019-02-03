@@ -1,23 +1,24 @@
 # Table of Contents
 
-1.  [Prologue](#orgaa77cb0)
-2.  [Nalude](#orgbf83b5c)
-3.  [Structure of Functions](#org839c943)
-    1.  [[-] Folds and Traversals <code>[5/7]</code>](#orgbff7da8)
-    2.  [[X] Lists <code>[5/5]</code>](#org9ce12cc)
-    3.  [[-] Miscellaneous <code>[2/6]</code>](#orgfa08ed4)
-    4.  [[ ] String <code>[0/4]</code>](#org23adb09)
-    5.  [[-] Specials <code>[1/5]</code>](#orgd0650e4)
-    6.  [[ ] Tuples <code>[0/4]</code>](#orgec6e528)
-    7.  [[ ] Zip and Unzip <code>[0/3]</code>](#org2e08d27)
-4.  [Get Start](#org05ee837)
-    1.  [Install](#orgbe63c29)
-    2.  [Usage](#orgd2f3ae4)
-5.  [Epoligue](#org589d9a8)
+1.  [Prologue](#orga84d1af)
+2.  [Nalude](#org575d1ba)
+3.  [Structure of Functions](#org98ca3a9)
+    1.  [Folds and Traversals](#orgcdf0e4c)
+    2.  [Lists](#org40096a0)
+    3.  [Miscellaneous](#org0dd692c)
+    4.  [String](#org0e42850)
+    5.  [Specials](#org6b5065f)
+    6.  [Tuples](#org495bc2b)
+    7.  [Zip and Unzip](#orgc44f5b8)
+4.  [Get Start](#orgf70ecde)
+    1.  [Install](#orge328661)
+5.  [Epoligue](#orge1161f8)
+    1.  [History](#org79a6064)
+        1.  [Version 0.1.0](#org81e5864)
 
 
 
-<a id="orgaa77cb0"></a>
+<a id="orga84d1af"></a>
 
 # Prologue
 
@@ -26,7 +27,7 @@ I like Haskell, also hope some of basic functions in Haskell can be used in Pyth
 Wish you enjoy coding.
 
 
-<a id="orgbf83b5c"></a>
+<a id="org575d1ba"></a>
 
 # Nalude
 
@@ -47,130 +48,129 @@ The following functions, Nalude tries to implement:
 7.  Zip and Unzip
 
 
-<a id="org839c943"></a>
+<a id="org98ca3a9"></a>
 
 # Structure of Functions
 
 
-<a id="orgbff7da8"></a>
+<a id="orgcdf0e4c"></a>
 
-## [-] Folds and Traversals <code>[5/7]</code>
+## Folds and Traversals
 
--   [X] **foldr:** Right-associative fold of a sequence.
--   [X] **foldl:** Left-associative fold of a sequence.  The same as `reduce`
--   [X] **foldr1:** A variant of foldr without base case.
--   [X] **foldl1:** A variant of foldl without base case.
--   [X] **product:** Computes the product of the numbers.
--   [ ] **traverse:** Map each element of a structure to an action, evaluate these actions from left
+-   **foldr(f: Callable[[b, a], b], init: b, t: Sequence[a]) -> b~:** Right-associative fold of a
+    sequence.
+-   **foldl(f, init, t):** Left-associative fold of a sequence.  The same as `reduce`.
+-   **foldr1(f, t):** A variant of foldr without base case.
+-   **foldl1(f, t):** A variant of foldl without base case.
+-   **product(nums):** Computes the product of the numbers.
+-   **(HELP WANTED) traverse:** Map each element of a structure to an action, evaluate these actions from left
     to right, and collect the results.
--   [ ] **sequence:** Evaluate each actions in the structure from left to right, and collect the
+-   **(HELP WANTED) sequence:** Evaluate each actions in the structure from left to right, and collect the
     results.
 
 
-<a id="org9ce12cc"></a>
+<a id="org40096a0"></a>
 
-## [X] Lists <code>[5/5]</code>
+## Lists
 
--   [X] **head:** Extract the first element of a sequence.
--   [X] **last:** Extract the last element of a sequence.
--   [X] **null:** Test whether the sequence is empty.
--   [X] Infinite lists <code>[4/4]</code>
-    -   [X] **iterate:** Yield a tuple of repeated applications of f to x.
-    -   [X] **repeat:** Repeat x.
-    -   [X] **replicate:** Return a list of length n with x the value of every element.
-    -   [X] **cycle:** Tie a sequence to infinite circuler one.
+-   **head(xs):** Extract the first element of a sequence.
+-   **last(xs):** Extract the last element of a sequence.
+-   **null(xs):** Test whether the sequence is empty.
+-   Infinite lists
+    -   **iterate(f, x):** Yield a tuple of repeated applications of f to x.
+    -   **repeat(x):** Repeat x.
+    -   **replicate(n, x):** Return a list of length n with x the value of every element.
+    -   **cycle(xs):** Tie a sequence to infinite circuler one.
 
--   [X] Sublists <code>[9/9]</code>
-    -   [X] **tail:** Extract the elements after the head of a list.
-    -   [X] **init:** Extract all the elements of a sequence except the last one.
-    -   [X] **take:** Return the first n elements of sequence xs.
-    -   [X] **drop:** Return the remaining elements of xs after the first n elements.
-    -   [X] **splitat:** Return a tuple where the first element is xs prefix of length n and second
-        element is the remainder of the sequence xs.
-    -   [X] **takewhile:** Return the longest prefix of xs of elements that satisfy predicate p.
-    -   [X] **dropwhile:** Returns the suffix remaining after takewhile(p, xs).
-    -   [X] **span:** Equal to (takewhile(p, xs), dropwhile(p, xs)).
-    -   [X] **break\_:** Equal to (takewhile(not\_(p), xs), dropwhile(not\_(p), xs)).
-
-
-<a id="orgfa08ed4"></a>
-
-## [-] Miscellaneous <code>[2/6]</code>
-
--   [ ] **id\_:**
-
--   [ ] **const:**
-
--   [X] **o:** (.) Function composition
--   [X] **flip:** Flip takes its two arguments into the reverse order of f.
--   [ ] **until:**
-
--   [ ] **seq:**
+-   Sublists
+    -   **tail(xs):** Extract the elements after the head of a list.
+    -   **init(xs):** Extract all the elements of a sequence except the last one.
+    -   **take(n, xs):** Return the first n elements of sequence xs.
+    -   **drop(n, xs):** Return the remaining elements of xs after the first n elements.
+    -   **splitat(n, xs):** Return a tuple where the first element is xs prefix of length n and
+        second element is the remainder of the sequence xs.
+    -   **takewhile(p, xs):** Return the longest prefix of xs of elements that satisfy predicate p.
+    -   **dropwhile(p, xs):** Returns the suffix remaining after takewhile(p, xs).
+    -   **span(p, xs):** Equal to (takewhile(p, xs), dropwhile(p, xs)).
+    -   **break\_(p, xs):** Equal to (takewhile(not\_(p), xs), dropwhile(not\_(p), xs)).
 
 
-<a id="org23adb09"></a>
+<a id="org0dd692c"></a>
 
-## [ ] String <code>[0/4]</code>
+## Miscellaneous
 
--   [ ] **lines:**
-
--   [ ] **unlines:**
-
--   [ ] **words:**
-
--   [ ] **unwords:**
+-   **id\_(x):** Identity function.
+-   **const(x, \_):** Evaluates to x for all inputs.
+-   **o(f1, f2):** (.) Function composition
+-   **flip(f):** Flip takes its two arguments into the reverse order of f.
+-   **until(p, f, x):** Yield the result of applying f until p holds.
 
 
-<a id="orgd0650e4"></a>
+<a id="org0e42850"></a>
 
-## [-] Specials <code>[1/5]</code>
+## String
 
--   [X] **not\_:** Boolean "not".
--   [ ] **all\_:**
-
--   [ ] **any\_:**
-
--   [ ] **concat:**
-
--   [ ] **concatmap:**
+-   **lines(s):** Break up a string into a list of strings at newline characters.
+-   **unlines(xs):** The inverse operation of lines, append a newline to each.
+-   **words(s):** Breaks a string up into a list of words, which were delimited by white space.
+-   **unwords(xs):** The inverse operation of words, join words with space.
 
 
-<a id="orgec6e528"></a>
+<a id="org6b5065f"></a>
 
-## [ ] Tuples <code>[0/4]</code>
+## Specials
 
--   [ ] **fst:** Extract the first component of a tuple.
--   [ ] **snd:** Extract the second component of a tuple.
--   [ ] **curry:** Converts an uncurried function to a curried function.
--   [ ] **uncurry:** Converts a curried function to a function on pairs.
-
-
-<a id="org2e08d27"></a>
-
-## [ ] Zip and Unzip <code>[0/3]</code>
-
--   [ ] **zipwith:**
-
--   [ ] **unzip:**
-
--   [ ] **unzipwith:**
+-   **not\_(f):** Boolean "not".
+-   **all\_(p, xs):** Determine whether all elements of the structure satisfy the p.
+-   **any\_(p, xs):** Determine whether sny elements of the structure satisfies the p.
+-   **concat(xss):** The concatenation of all the elements of a container of Sequences.
+-   **concatmap(f, xss):** Map a function over all the elements of a container and concatenate the
+    resulting lists.
 
 
-<a id="org05ee837"></a>
+<a id="org495bc2b"></a>
+
+## Tuples
+
+-   **fst(t):** Extract the first component of a tuple.
+-   **snd(t):** Extract the second component of a tuple.
+-   **curry(f, a, b):** Converts an uncurried function to a curried function.
+-   **uncurry(f, ab@(a, b)):** Converts a curried function to a function on pairs.
+
+
+<a id="orgc44f5b8"></a>
+
+## Zip and Unzip
+
+-   **zipwith(f, \*seqs):** Zipwith is map(f, zip), but f accept separate args instead of tuple
+-   **unzip(pairs):** Transform a sequence of pairs into a tuple of sequence. (Not lazy)
+
+
+<a id="orgf70ecde"></a>
 
 # Get Start
 
 
-<a id="orgbe63c29"></a>
+<a id="orge328661"></a>
 
 ## Install
 
-
-<a id="orgd2f3ae4"></a>
-
-## Usage
+    pip install nalude
 
 
-<a id="org589d9a8"></a>
+<a id="orge1161f8"></a>
 
 # Epoligue
+
+
+<a id="org79a6064"></a>
+
+## History
+
+
+<a id="org81e5864"></a>
+
+### Version 0.1.0
+
+-   **Data:** <span class="timestamp-wrapper"><span class="timestamp">&lt;Sun Feb 03, 2019&gt;</span></span>
+-   **Commemorate Version:** First Release.
