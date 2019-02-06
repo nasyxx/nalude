@@ -15,17 +15,18 @@
 
 * Prologue
 
-I like Haskell, also hope some of basic functions in Haskell can be used in Python.
+I like Haskell, also hope some of the prelude functions in Haskell can be used in Python.
 
-Wish you enjoy coding.
+Wish you enjoy coding with nalude.
 
 * Nalude
 
 Nalude is a standard module, which is inspired by Haskell's Prelude.  Thus, nalude is also a
 library of functional programming.
 
-Nalude doesn't specifically distinguish between Applicative's or monadic function, since they are
-not well differentiated in the basic structure of Python.
+Nalude doesn't explicitly distinguish between Applicative's or monadic function since they are not
+well differentiated in the basic structure of Python.  Of course, the main reason is that I am too
+fresh.
 
 The following functions, Nalude tries to implement:
 
@@ -72,7 +73,7 @@ The following functions, Nalude tries to implement:
         + splitat(n, xs) :: Return a tuple where the first element is xs prefix of length n and
           second element is the remainder of the sequence xs.
         + takewhile(p, xs) :: Return the longest prefix of xs of elements that satisfy predicate p.
-        + dropwhile(p, xs) :: Returns the suffix remaining after takewhile(p, xs).
+        + dropwhile(p, xs) :: Return the suffix remaining after takewhile(p, xs).
         + (LAZY ONE HELP WANTED) span(p, xs) :: Equal to (takewhile(p, xs), dropwhile(p, xs)).
         + (LAZY ONE HELP WANTED) break_(p, xs) :: Equal to (takewhile(not_(p), xs),
           dropwhile(not_(p), xs)).
@@ -89,7 +90,7 @@ The following functions, Nalude tries to implement:
 
     - lines(s) :: Break up a string into a list of strings at newline characters.
     - unlines(xs) :: The inverse operation of lines, append a newline to each.
-    - words(s) :: Breaks a string up into a list of words, which were delimited by white space.
+    - words(s) :: Break a string up into a list of words, which were delimited by white space.
     - unwords(xs) :: The inverse operation of words, join words with space.
 
 ** Specials

@@ -1,41 +1,42 @@
 # Table of Contents
 
-1.  [Prologue](#orgf3d623c)
-2.  [Nalude](#org860f92d)
-3.  [Structure of Functions](#orge217ccf)
-    1.  [Folds and Traversals](#orgd4b0575)
-    2.  [Lists](#org9bfd24f)
-    3.  [Miscellaneous](#org9c502c4)
-    4.  [String](#orga5b8e5c)
-    5.  [Specials](#orga37547b)
-    6.  [Tuples](#orgafb497a)
-    7.  [Zip and Unzip](#org68a3559)
-4.  [Get Start](#org9ecdb64)
-    1.  [Install](#orge3e4d68)
-5.  [Epoligue](#orgefb4c33)
-    1.  [History](#orgadc1be2)
-        1.  [Version 0.1.0](#org3c811ad)
+1.  [Prologue](#orgb1cdb0d)
+2.  [Nalude](#org651a56c)
+3.  [Structure of Functions](#org5ec4a2b)
+    1.  [Folds and Traversals](#org5239886)
+    2.  [Lists](#org36ac42a)
+    3.  [Miscellaneous](#orgbdce897)
+    4.  [String](#org476f3ba)
+    5.  [Specials](#orgedd5800)
+    6.  [Tuples](#org0aab6bb)
+    7.  [Zip and Unzip](#org67718ab)
+4.  [Get Start](#org011d491)
+    1.  [Install](#org3609dd3)
+5.  [Epoligue](#orgae19825)
+    1.  [History](#org7dc229f)
+        1.  [Version 0.1.0](#org9e3d075)
 
 
 
-<a id="orgf3d623c"></a>
+<a id="orgb1cdb0d"></a>
 
 # Prologue
 
-I like Haskell, also hope some of basic functions in Haskell can be used in Python.
+I like Haskell, also hope some of the prelude functions in Haskell can be used in Python.
 
-Wish you enjoy coding.
+Wish you enjoy coding with nalude.
 
 
-<a id="org860f92d"></a>
+<a id="org651a56c"></a>
 
 # Nalude
 
 Nalude is a standard module, which is inspired by Haskell's Prelude.  Thus, nalude is also a
 library of functional programming.
 
-Nalude doesn't specifically distinguish between Applicative's or monadic function, since they are
-not well differentiated in the basic structure of Python.
+Nalude doesn't explicitly distinguish between Applicative's or monadic function since they are not
+well differentiated in the basic structure of Python.  Of course, the main reason is that I am too
+fresh.
 
 The following functions, Nalude tries to implement:
 
@@ -48,12 +49,12 @@ The following functions, Nalude tries to implement:
 7.  Zip and Unzip
 
 
-<a id="orge217ccf"></a>
+<a id="org5ec4a2b"></a>
 
 # Structure of Functions
 
 
-<a id="orgd4b0575"></a>
+<a id="org5239886"></a>
 
 ## Folds and Traversals
 
@@ -69,7 +70,7 @@ The following functions, Nalude tries to implement:
     results.
 
 
-<a id="org9bfd24f"></a>
+<a id="org36ac42a"></a>
 
 ## Lists
 
@@ -90,13 +91,13 @@ The following functions, Nalude tries to implement:
     -   **splitat(n, xs):** Return a tuple where the first element is xs prefix of length n and
         second element is the remainder of the sequence xs.
     -   **takewhile(p, xs):** Return the longest prefix of xs of elements that satisfy predicate p.
-    -   **dropwhile(p, xs):** Returns the suffix remaining after takewhile(p, xs).
+    -   **dropwhile(p, xs):** Return the suffix remaining after takewhile(p, xs).
     -   **(LAZY ONE HELP WANTED) span(p, xs):** Equal to (takewhile(p, xs), dropwhile(p, xs)).
     -   **(LAZY ONE HELP WANTED) break\_(p, xs):** Equal to (takewhile(not\_(p), xs),
         dropwhile(not\_(p), xs)).
 
 
-<a id="org9c502c4"></a>
+<a id="orgbdce897"></a>
 
 ## Miscellaneous
 
@@ -107,17 +108,17 @@ The following functions, Nalude tries to implement:
 -   **until(p, f, x):** Yield the result of applying f until p holds.
 
 
-<a id="orga5b8e5c"></a>
+<a id="org476f3ba"></a>
 
 ## String
 
 -   **lines(s):** Break up a string into a list of strings at newline characters.
 -   **unlines(xs):** The inverse operation of lines, append a newline to each.
--   **words(s):** Breaks a string up into a list of words, which were delimited by white space.
+-   **words(s):** Break a string up into a list of words, which were delimited by white space.
 -   **unwords(xs):** The inverse operation of words, join words with space.
 
 
-<a id="orga37547b"></a>
+<a id="orgedd5800"></a>
 
 ## Specials
 
@@ -129,7 +130,7 @@ The following functions, Nalude tries to implement:
     resulting lists.
 
 
-<a id="orgafb497a"></a>
+<a id="org0aab6bb"></a>
 
 ## Tuples
 
@@ -139,7 +140,7 @@ The following functions, Nalude tries to implement:
 -   **uncurry(f, ab@(a, b)):** Converts a curried function to a function on pairs.
 
 
-<a id="org68a3559"></a>
+<a id="org67718ab"></a>
 
 ## Zip and Unzip
 
@@ -147,29 +148,29 @@ The following functions, Nalude tries to implement:
 -   **unzip(pairs):** Transform an iterable of pairs into a tuple of sequence. (Not lazy)
 
 
-<a id="org9ecdb64"></a>
+<a id="org011d491"></a>
 
 # Get Start
 
 
-<a id="orge3e4d68"></a>
+<a id="org3609dd3"></a>
 
 ## Install
 
     pip install nalude
 
 
-<a id="orgefb4c33"></a>
+<a id="orgae19825"></a>
 
 # Epoligue
 
 
-<a id="orgadc1be2"></a>
+<a id="org7dc229f"></a>
 
 ## History
 
 
-<a id="org3c811ad"></a>
+<a id="org9e3d075"></a>
 
 ### Version 0.1.0
 
