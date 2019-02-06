@@ -149,12 +149,10 @@ def null(l: Sequence[a]) -> bool:
         return True
 
 
-def iterate(f: Callable[[a], a], x: a) -> Generator[Tuple[a, ...], None, None]:
+def iterate(f: Callable[[a], a], x: a) -> G:
     """Yield a tuple of repeated applications of f to x."""
-    res = []
     while True:
-        res.append(x)
-        yield tuple(res)
+        yield x
         x = f(x)
 
 
