@@ -231,18 +231,20 @@ def dropwhile(p: Predicate, xs: Iterable[a]) -> G:
         if not p(x):
             yield x
             break
-    for x in xs:
+    for x in ixs:
         yield x
 
 
-def span(p: Predicate, xs: Iterable[a]) -> Tuple[G, G]:
+def span(p: Predicate, xs: Iterable[a]) -> Tuple[List[a], List[a]]:
     """Equal to (takewhile(p, xs), dropwhile(p, xs))."""
-    return takewhile(p, xs), dropwhile(p, xs)
+    lxs = list(xs)
+    return list(takewhile(p, lxs)), list(dropwhile(p, lxs))
 
 
-def break_(p: Predicate, xs: Iterable[a]) -> Tuple[G, G]:
+def break_(p: Predicate, xs: Iterable[a]) -> Tuple[List[a], List[a]]:
     """Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs))."""
-    return takewhile(not_(p), xs), dropwhile(not_(p), xs)
+    lxs = list(xs)
+    return list(takewhile(not_(p), lxs)), list(dropwhile(not_(p), lxs))
 
 
 # ----------------------------------------------------------------------
@@ -317,7 +319,7 @@ def not_(f: Callable[..., bool]) -> Callable[..., bool]:
 
     def _wrap(*args: a, **kwds: b) -> bool:
         """Wrapper of not_."""
-        return f(*args, **kwds)
+        return not f(*args, **kwds)
 
     return _wrap
 
