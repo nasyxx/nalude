@@ -73,8 +73,9 @@ The following functions, Nalude tries to implement:
           second element is the remainder of the sequence xs.
         + takewhile(p, xs) :: Return the longest prefix of xs of elements that satisfy predicate p.
         + dropwhile(p, xs) :: Returns the suffix remaining after takewhile(p, xs).
-        + span(p, xs) :: Equal to (takewhile(p, xs), dropwhile(p, xs)).
-        + break_(p, xs) :: Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).
+        + (LAZY ONE HELP WANTED) span(p, xs) :: Equal to (takewhile(p, xs), dropwhile(p, xs)).
+        + (LAZY ONE HELP WANTED) break_(p, xs) :: Equal to (takewhile(not_(p), xs),
+          dropwhile(not_(p), xs)).
 
 ** Miscellaneous
 

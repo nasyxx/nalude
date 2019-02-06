@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-06 Wed 17:56 -->
+<!-- 2019-02-06 Wed 21:06 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nalude</title>
@@ -252,29 +252,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbd8180b">1. Prologue</a></li>
-<li><a href="#orgc59b6da">2. Nalude</a></li>
-<li><a href="#orgb66b074">3. Structure of Functions</a>
+<li><a href="#org9d5ae8b">1. Prologue</a></li>
+<li><a href="#orgcf1d58d">2. Nalude</a></li>
+<li><a href="#org1134de0">3. Structure of Functions</a>
 <ul>
-<li><a href="#orgcabe788">3.1. Folds and Traversals</a></li>
-<li><a href="#org1cac3fb">3.2. Lists</a></li>
-<li><a href="#org00344e3">3.3. Miscellaneous</a></li>
-<li><a href="#org1a69de0">3.4. String</a></li>
-<li><a href="#orga475a49">3.5. Specials</a></li>
-<li><a href="#orgfa6b6f9">3.6. Tuples</a></li>
-<li><a href="#orgb98bfa1">3.7. Zip and Unzip</a></li>
+<li><a href="#org42d7b65">3.1. Folds and Traversals</a></li>
+<li><a href="#org68cdb17">3.2. Lists</a></li>
+<li><a href="#org8f63aef">3.3. Miscellaneous</a></li>
+<li><a href="#org27a4344">3.4. String</a></li>
+<li><a href="#orgaa69b2c">3.5. Specials</a></li>
+<li><a href="#org9846e97">3.6. Tuples</a></li>
+<li><a href="#orgb1951a4">3.7. Zip and Unzip</a></li>
 </ul>
 </li>
-<li><a href="#org44d4e1f">4. Get Start</a>
+<li><a href="#org20ba84a">4. Get Start</a>
 <ul>
-<li><a href="#org640dcdf">4.1. Install</a></li>
+<li><a href="#orge176a3f">4.1. Install</a></li>
 </ul>
 </li>
-<li><a href="#org0aadb0a">5. Epoligue</a>
+<li><a href="#orgecb9b24">5. Epoligue</a>
 <ul>
-<li><a href="#org5be6963">5.1. History</a>
+<li><a href="#org1719a2f">5.1. History</a>
 <ul>
-<li><a href="#orgb230792">5.1.1. Version 0.1.0</a></li>
+<li><a href="#org4de2c27">5.1.1. Version 0.1.0</a></li>
 </ul>
 </li>
 </ul>
@@ -283,8 +283,8 @@ for the JavaScript code in this tag.
 </div>
 </nav>
 
-<div id="outline-container-orgbd8180b" class="outline-2">
-<h2 id="orgbd8180b"><span class="section-number-2">1</span> Prologue</h2>
+<div id="outline-container-org9d5ae8b" class="outline-2">
+<h2 id="org9d5ae8b"><span class="section-number-2">1</span> Prologue</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I like Haskell, also hope some of basic functions in Haskell can be used in Python.
@@ -296,8 +296,8 @@ Wish you enjoy coding.
 </div>
 </div>
 
-<div id="outline-container-orgc59b6da" class="outline-2">
-<h2 id="orgc59b6da"><span class="section-number-2">2</span> Nalude</h2>
+<div id="outline-container-orgcf1d58d" class="outline-2">
+<h2 id="orgcf1d58d"><span class="section-number-2">2</span> Nalude</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Nalude is a standard module, which is inspired by Haskell's Prelude.  Thus, nalude is also a
@@ -325,12 +325,12 @@ The following functions, Nalude tries to implement:
 </div>
 </div>
 
-<div id="outline-container-orgb66b074" class="outline-2">
-<h2 id="orgb66b074"><span class="section-number-2">3</span> Structure of Functions</h2>
+<div id="outline-container-org1134de0" class="outline-2">
+<h2 id="org1134de0"><span class="section-number-2">3</span> Structure of Functions</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgcabe788" class="outline-3">
-<h3 id="orgcabe788"><span class="section-number-3">3.1</span> Folds and Traversals</h3>
+<div id="outline-container-org42d7b65" class="outline-3">
+<h3 id="org42d7b65"><span class="section-number-3">3.1</span> Folds and Traversals</h3>
 <div class="outline-text-3" id="text-3-1">
 <dl class="org-dl">
 <dt>foldr(f: Callable[[b, a], b], init: b, t: Sequence[a])</dt><dd>Right-associative fold of a
@@ -346,8 +346,8 @@ results.</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org1cac3fb" class="outline-3">
-<h3 id="org1cac3fb"><span class="section-number-3">3.2</span> Lists</h3>
+<div id="outline-container-org68cdb17" class="outline-3">
+<h3 id="org68cdb17"><span class="section-number-3">3.2</span> Lists</h3>
 <div class="outline-text-3" id="text-3-2">
 <dl class="org-dl">
 <dt>head(xs)</dt><dd>Extract the first element of an iterable.</dd>
@@ -373,15 +373,16 @@ results.</dd>
 second element is the remainder of the sequence xs.</dd>
 <dt>takewhile(p, xs)</dt><dd>Return the longest prefix of xs of elements that satisfy predicate p.</dd>
 <dt>dropwhile(p, xs)</dt><dd>Returns the suffix remaining after takewhile(p, xs).</dd>
-<dt>span(p, xs)</dt><dd>Equal to (takewhile(p, xs), dropwhile(p, xs)).</dd>
-<dt>break_(p, xs)</dt><dd>Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).</dd>
+<dt>(LAZY ONE HELP WANTED) span(p, xs)</dt><dd>Equal to (takewhile(p, xs), dropwhile(p, xs)).</dd>
+<dt>(LAZY ONE HELP WANTED) break_(p, xs)</dt><dd>Equal to (takewhile(not_(p), xs),
+dropwhile(not_(p), xs)).</dd>
 </dl></dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-org00344e3" class="outline-3">
-<h3 id="org00344e3"><span class="section-number-3">3.3</span> Miscellaneous</h3>
+<div id="outline-container-org8f63aef" class="outline-3">
+<h3 id="org8f63aef"><span class="section-number-3">3.3</span> Miscellaneous</h3>
 <div class="outline-text-3" id="text-3-3">
 <dl class="org-dl">
 <dt>id_(x)</dt><dd>Identity function.</dd>
@@ -393,8 +394,8 @@ second element is the remainder of the sequence xs.</dd>
 </div>
 </div>
 
-<div id="outline-container-org1a69de0" class="outline-3">
-<h3 id="org1a69de0"><span class="section-number-3">3.4</span> String</h3>
+<div id="outline-container-org27a4344" class="outline-3">
+<h3 id="org27a4344"><span class="section-number-3">3.4</span> String</h3>
 <div class="outline-text-3" id="text-3-4">
 <dl class="org-dl">
 <dt>lines(s)</dt><dd>Break up a string into a list of strings at newline characters.</dd>
@@ -405,8 +406,8 @@ second element is the remainder of the sequence xs.</dd>
 </div>
 </div>
 
-<div id="outline-container-orga475a49" class="outline-3">
-<h3 id="orga475a49"><span class="section-number-3">3.5</span> Specials</h3>
+<div id="outline-container-orgaa69b2c" class="outline-3">
+<h3 id="orgaa69b2c"><span class="section-number-3">3.5</span> Specials</h3>
 <div class="outline-text-3" id="text-3-5">
 <dl class="org-dl">
 <dt>not_(f)</dt><dd>Boolean "not".</dd>
@@ -419,8 +420,8 @@ resulting lists.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgfa6b6f9" class="outline-3">
-<h3 id="orgfa6b6f9"><span class="section-number-3">3.6</span> Tuples</h3>
+<div id="outline-container-org9846e97" class="outline-3">
+<h3 id="org9846e97"><span class="section-number-3">3.6</span> Tuples</h3>
 <div class="outline-text-3" id="text-3-6">
 <dl class="org-dl">
 <dt>fst(t)</dt><dd>Extract the first component of a tuple.</dd>
@@ -431,8 +432,8 @@ resulting lists.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgb98bfa1" class="outline-3">
-<h3 id="orgb98bfa1"><span class="section-number-3">3.7</span> Zip and Unzip</h3>
+<div id="outline-container-orgb1951a4" class="outline-3">
+<h3 id="orgb1951a4"><span class="section-number-3">3.7</span> Zip and Unzip</h3>
 <div class="outline-text-3" id="text-3-7">
 <dl class="org-dl">
 <dt>zipwith(f, *seqs)</dt><dd>Zipwith is map(f, zip), but f accept separate args instead of tuple</dd>
@@ -442,12 +443,12 @@ resulting lists.</dd>
 </div>
 </div>
 
-<div id="outline-container-org44d4e1f" class="outline-2">
-<h2 id="org44d4e1f"><span class="section-number-2">4</span> Get Start</h2>
+<div id="outline-container-org20ba84a" class="outline-2">
+<h2 id="org20ba84a"><span class="section-number-2">4</span> Get Start</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org640dcdf" class="outline-3">
-<h3 id="org640dcdf"><span class="section-number-3">4.1</span> Install</h3>
+<div id="outline-container-orge176a3f" class="outline-3">
+<h3 id="orge176a3f"><span class="section-number-3">4.1</span> Install</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-zsh">pip install nalude
@@ -457,19 +458,19 @@ resulting lists.</dd>
 </div>
 </div>
 
-<div id="outline-container-org0aadb0a" class="outline-2">
-<h2 id="org0aadb0a"><span class="section-number-2">5</span> Epoligue</h2>
+<div id="outline-container-orgecb9b24" class="outline-2">
+<h2 id="orgecb9b24"><span class="section-number-2">5</span> Epoligue</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org5be6963" class="outline-3">
-<h3 id="org5be6963"><span class="section-number-3">5.1</span> History</h3>
+<div id="outline-container-org1719a2f" class="outline-3">
+<h3 id="org1719a2f"><span class="section-number-3">5.1</span> History</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgb230792" class="outline-4">
-<h4 id="orgb230792"><span class="section-number-4">5.1.1</span> Version 0.1.0</h4>
+<div id="outline-container-org4de2c27" class="outline-4">
+<h4 id="org4de2c27"><span class="section-number-4">5.1.1</span> Version 0.1.0</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <dl class="org-dl">
-<dt>Data</dt><dd><span class="timestamp-wrapper"><span class="timestamp">&lt;Sun Feb 03, 2019&gt;</span></span></dd>
+<dt>Data</dt><dd><span class="timestamp-wrapper"><span class="timestamp">&lt;Wed Feb 06, 2019&gt;</span></span></dd>
 <dt>Commemorate Version</dt><dd>First Release.</dd>
 </dl>
 </div>
@@ -480,7 +481,7 @@ resulting lists.</dd>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-01-30 Wed 00:00</p>
 <p class="author">Author: Nasy</p>
-<p class="date">Created: 2019-02-06 Wed 17:56</p>
+<p class="date">Created: 2019-02-06 Wed 21:06</p>
 <p class="validation"></p>
 </div>
 </body>

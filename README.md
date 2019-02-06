@@ -1,24 +1,24 @@
 # Table of Contents
 
-1.  [Prologue](#org19b18cf)
-2.  [Nalude](#orgc77e6a3)
-3.  [Structure of Functions](#orge0ad8b3)
-    1.  [Folds and Traversals](#org814be7e)
-    2.  [Lists](#org5921d0c)
-    3.  [Miscellaneous](#orgd0fae96)
-    4.  [String](#org9582c2a)
-    5.  [Specials](#org5a96f6e)
-    6.  [Tuples](#orgadf604e)
-    7.  [Zip and Unzip](#org17b382b)
-4.  [Get Start](#org5fa3150)
-    1.  [Install](#org6298306)
-5.  [Epoligue](#orgfe5301e)
-    1.  [History](#orgfdeed81)
-        1.  [Version 0.1.0](#orgf3aa613)
+1.  [Prologue](#orgf3d623c)
+2.  [Nalude](#org860f92d)
+3.  [Structure of Functions](#orge217ccf)
+    1.  [Folds and Traversals](#orgd4b0575)
+    2.  [Lists](#org9bfd24f)
+    3.  [Miscellaneous](#org9c502c4)
+    4.  [String](#orga5b8e5c)
+    5.  [Specials](#orga37547b)
+    6.  [Tuples](#orgafb497a)
+    7.  [Zip and Unzip](#org68a3559)
+4.  [Get Start](#org9ecdb64)
+    1.  [Install](#orge3e4d68)
+5.  [Epoligue](#orgefb4c33)
+    1.  [History](#orgadc1be2)
+        1.  [Version 0.1.0](#org3c811ad)
 
 
 
-<a id="org19b18cf"></a>
+<a id="orgf3d623c"></a>
 
 # Prologue
 
@@ -27,7 +27,7 @@ I like Haskell, also hope some of basic functions in Haskell can be used in Pyth
 Wish you enjoy coding.
 
 
-<a id="orgc77e6a3"></a>
+<a id="org860f92d"></a>
 
 # Nalude
 
@@ -48,12 +48,12 @@ The following functions, Nalude tries to implement:
 7.  Zip and Unzip
 
 
-<a id="orge0ad8b3"></a>
+<a id="orge217ccf"></a>
 
 # Structure of Functions
 
 
-<a id="org814be7e"></a>
+<a id="orgd4b0575"></a>
 
 ## Folds and Traversals
 
@@ -69,7 +69,7 @@ The following functions, Nalude tries to implement:
     results.
 
 
-<a id="org5921d0c"></a>
+<a id="org9bfd24f"></a>
 
 ## Lists
 
@@ -91,11 +91,12 @@ The following functions, Nalude tries to implement:
         second element is the remainder of the sequence xs.
     -   **takewhile(p, xs):** Return the longest prefix of xs of elements that satisfy predicate p.
     -   **dropwhile(p, xs):** Returns the suffix remaining after takewhile(p, xs).
-    -   **span(p, xs):** Equal to (takewhile(p, xs), dropwhile(p, xs)).
-    -   **break\_(p, xs):** Equal to (takewhile(not\_(p), xs), dropwhile(not\_(p), xs)).
+    -   **(LAZY ONE HELP WANTED) span(p, xs):** Equal to (takewhile(p, xs), dropwhile(p, xs)).
+    -   **(LAZY ONE HELP WANTED) break\_(p, xs):** Equal to (takewhile(not\_(p), xs),
+        dropwhile(not\_(p), xs)).
 
 
-<a id="orgd0fae96"></a>
+<a id="org9c502c4"></a>
 
 ## Miscellaneous
 
@@ -106,7 +107,7 @@ The following functions, Nalude tries to implement:
 -   **until(p, f, x):** Yield the result of applying f until p holds.
 
 
-<a id="org9582c2a"></a>
+<a id="orga5b8e5c"></a>
 
 ## String
 
@@ -116,7 +117,7 @@ The following functions, Nalude tries to implement:
 -   **unwords(xs):** The inverse operation of words, join words with space.
 
 
-<a id="org5a96f6e"></a>
+<a id="orga37547b"></a>
 
 ## Specials
 
@@ -128,7 +129,7 @@ The following functions, Nalude tries to implement:
     resulting lists.
 
 
-<a id="orgadf604e"></a>
+<a id="orgafb497a"></a>
 
 ## Tuples
 
@@ -138,7 +139,7 @@ The following functions, Nalude tries to implement:
 -   **uncurry(f, ab@(a, b)):** Converts a curried function to a function on pairs.
 
 
-<a id="org17b382b"></a>
+<a id="org68a3559"></a>
 
 ## Zip and Unzip
 
@@ -146,31 +147,31 @@ The following functions, Nalude tries to implement:
 -   **unzip(pairs):** Transform an iterable of pairs into a tuple of sequence. (Not lazy)
 
 
-<a id="org5fa3150"></a>
+<a id="org9ecdb64"></a>
 
 # Get Start
 
 
-<a id="org6298306"></a>
+<a id="orge3e4d68"></a>
 
 ## Install
 
     pip install nalude
 
 
-<a id="orgfe5301e"></a>
+<a id="orgefb4c33"></a>
 
 # Epoligue
 
 
-<a id="orgfdeed81"></a>
+<a id="orgadc1be2"></a>
 
 ## History
 
 
-<a id="orgf3aa613"></a>
+<a id="org3c811ad"></a>
 
 ### Version 0.1.0
 
--   **Data:** <span class="timestamp-wrapper"><span class="timestamp">&lt;Sun Feb 03, 2019&gt;</span></span>
+-   **Data:** <span class="timestamp-wrapper"><span class="timestamp">&lt;Wed Feb 06, 2019&gt;</span></span>
 -   **Commemorate Version:** First Release.
