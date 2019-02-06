@@ -236,13 +236,17 @@ def dropwhile(p: Predicate, xs: Iterable[a]) -> G:
 
 
 def span(p: Predicate, xs: Iterable[a]) -> Tuple[List[a], List[a]]:
-    """Equal to (takewhile(p, xs), dropwhile(p, xs))."""
+    """Equal to (takewhile(p, xs), dropwhile(p, xs)).
+
+    Note: Not lazy."""
     lxs = list(xs)
     return list(takewhile(p, lxs)), list(dropwhile(p, lxs))
 
 
 def break_(p: Predicate, xs: Iterable[a]) -> Tuple[List[a], List[a]]:
-    """Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs))."""
+    """Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs)).
+
+    Note: Not lazy."""
     lxs = list(xs)
     return list(takewhile(not_(p), lxs)), list(dropwhile(not_(p), lxs))
 
@@ -295,7 +299,7 @@ def lines(s: str) -> List[str]:
 
 def unlines(xs: Iterable[str]) -> str:
     """The inverse operation of lines, append a newline to each."""
-    return "\n".join(xs) + "\n"
+    return "\n".join(xs) + ("\n" if xs else "")
 
 
 def words(s: str) -> List[str]:
@@ -383,7 +387,7 @@ def uncurry(f: Callable[[a, b], c], ab: Tuple[a, b]) -> c:
 
 
 def zipwith(
-    f: Callable[[a], c], *seqs: Iterable[a]
+    f: Callable[..., c], *seqs: Iterable[a]
 ) -> Generator[c, None, None]:
     """Zipwith is map(f, zip), but f accept separate args instead of tuple"""
     for zseq in zip(*seqs):
