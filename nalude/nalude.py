@@ -171,7 +171,14 @@ def replicate(n: int, x: a) -> G:
 def cycle(xs: Sequence[a]) -> G:
     """Tie a sequence to infinite circuler one."""
     xs_ = []  # if x is a finite iterator, this can save the value.
-    for x in xs:
+    ixs = iter(xs)
+    try:
+        x = next(ixs)
+        yield x
+        xs_.append(x)
+    except StopIteration:
+        raise IndexError("Sequence is empty.")
+    for x in ixs:
         yield x
         xs_.append(x)
     while True:
