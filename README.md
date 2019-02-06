@@ -1,24 +1,24 @@
 # Table of Contents
 
-1.  [Prologue](#orga84d1af)
-2.  [Nalude](#org575d1ba)
-3.  [Structure of Functions](#org98ca3a9)
-    1.  [Folds and Traversals](#orgcdf0e4c)
-    2.  [Lists](#org40096a0)
-    3.  [Miscellaneous](#org0dd692c)
-    4.  [String](#org0e42850)
-    5.  [Specials](#org6b5065f)
-    6.  [Tuples](#org495bc2b)
-    7.  [Zip and Unzip](#orgc44f5b8)
-4.  [Get Start](#orgf70ecde)
-    1.  [Install](#orge328661)
-5.  [Epoligue](#orge1161f8)
-    1.  [History](#org79a6064)
-        1.  [Version 0.1.0](#org81e5864)
+1.  [Prologue](#org19b18cf)
+2.  [Nalude](#orgc77e6a3)
+3.  [Structure of Functions](#orge0ad8b3)
+    1.  [Folds and Traversals](#org814be7e)
+    2.  [Lists](#org5921d0c)
+    3.  [Miscellaneous](#orgd0fae96)
+    4.  [String](#org9582c2a)
+    5.  [Specials](#org5a96f6e)
+    6.  [Tuples](#orgadf604e)
+    7.  [Zip and Unzip](#org17b382b)
+4.  [Get Start](#org5fa3150)
+    1.  [Install](#org6298306)
+5.  [Epoligue](#orgfe5301e)
+    1.  [History](#orgfdeed81)
+        1.  [Version 0.1.0](#orgf3aa613)
 
 
 
-<a id="orga84d1af"></a>
+<a id="org19b18cf"></a>
 
 # Prologue
 
@@ -27,7 +27,7 @@ I like Haskell, also hope some of basic functions in Haskell can be used in Pyth
 Wish you enjoy coding.
 
 
-<a id="org575d1ba"></a>
+<a id="orgc77e6a3"></a>
 
 # Nalude
 
@@ -48,18 +48,18 @@ The following functions, Nalude tries to implement:
 7.  Zip and Unzip
 
 
-<a id="org98ca3a9"></a>
+<a id="orge0ad8b3"></a>
 
 # Structure of Functions
 
 
-<a id="orgcdf0e4c"></a>
+<a id="org814be7e"></a>
 
 ## Folds and Traversals
 
--   **foldr(f: Callable[[b, a], b], init: b, t: Sequence[a]) -> b~:** Right-associative fold of a
+-   **foldr(f: Callable[[b, a], b], init: b, t: Sequence[a]):** Right-associative fold of a
     sequence.
--   **foldl(f, init, t):** Left-associative fold of a sequence.  The same as `reduce`.
+-   **foldl(f, init, t):** Left-associative fold of an iterable.  The same as `reduce`.
 -   **foldr1(f, t):** A variant of foldr without base case.
 -   **foldl1(f, t):** A variant of foldl without base case.
 -   **product(nums):** Computes the product of the numbers.
@@ -69,22 +69,22 @@ The following functions, Nalude tries to implement:
     results.
 
 
-<a id="org40096a0"></a>
+<a id="org5921d0c"></a>
 
 ## Lists
 
--   **head(xs):** Extract the first element of a sequence.
--   **last(xs):** Extract the last element of a sequence.
+-   **head(xs):** Extract the first element of an iterable.
+-   **last(xs):** Extract the last element of an iterable.
 -   **null(xs):** Test whether the sequence is empty.
 -   Infinite lists
     -   **iterate(f, x):** Yield a tuple of repeated applications of f to x.
     -   **repeat(x):** Repeat x.
     -   **replicate(n, x):** Return a list of length n with x the value of every element.
-    -   **cycle(xs):** Tie a sequence to infinite circuler one.
+    -   **cycle(xs):** Tie an iterable to infinite circuler one.
 
 -   Sublists
     -   **tail(xs):** Extract the elements after the head of a list.
-    -   **init(xs):** Extract all the elements of a sequence except the last one.
+    -   **init(xs):** Extract all the elements of an iterable except the last one.
     -   **take(n, xs):** Return the first n elements of sequence xs.
     -   **drop(n, xs):** Return the remaining elements of xs after the first n elements.
     -   **splitat(n, xs):** Return a tuple where the first element is xs prefix of length n and
@@ -95,7 +95,7 @@ The following functions, Nalude tries to implement:
     -   **break\_(p, xs):** Equal to (takewhile(not\_(p), xs), dropwhile(not\_(p), xs)).
 
 
-<a id="org0dd692c"></a>
+<a id="orgd0fae96"></a>
 
 ## Miscellaneous
 
@@ -106,7 +106,7 @@ The following functions, Nalude tries to implement:
 -   **until(p, f, x):** Yield the result of applying f until p holds.
 
 
-<a id="org0e42850"></a>
+<a id="org9582c2a"></a>
 
 ## String
 
@@ -116,7 +116,7 @@ The following functions, Nalude tries to implement:
 -   **unwords(xs):** The inverse operation of words, join words with space.
 
 
-<a id="org6b5065f"></a>
+<a id="org5a96f6e"></a>
 
 ## Specials
 
@@ -128,7 +128,7 @@ The following functions, Nalude tries to implement:
     resulting lists.
 
 
-<a id="org495bc2b"></a>
+<a id="orgadf604e"></a>
 
 ## Tuples
 
@@ -138,37 +138,37 @@ The following functions, Nalude tries to implement:
 -   **uncurry(f, ab@(a, b)):** Converts a curried function to a function on pairs.
 
 
-<a id="orgc44f5b8"></a>
+<a id="org17b382b"></a>
 
 ## Zip and Unzip
 
 -   **zipwith(f, \*seqs):** Zipwith is map(f, zip), but f accept separate args instead of tuple
--   **unzip(pairs):** Transform a sequence of pairs into a tuple of sequence. (Not lazy)
+-   **unzip(pairs):** Transform an iterable of pairs into a tuple of sequence. (Not lazy)
 
 
-<a id="orgf70ecde"></a>
+<a id="org5fa3150"></a>
 
 # Get Start
 
 
-<a id="orge328661"></a>
+<a id="org6298306"></a>
 
 ## Install
 
     pip install nalude
 
 
-<a id="orge1161f8"></a>
+<a id="orgfe5301e"></a>
 
 # Epoligue
 
 
-<a id="org79a6064"></a>
+<a id="orgfdeed81"></a>
 
 ## History
 
 
-<a id="org81e5864"></a>
+<a id="orgf3aa613"></a>
 
 ### Version 0.1.0
 

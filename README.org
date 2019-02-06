@@ -43,7 +43,7 @@ The following functions, Nalude tries to implement:
 
     - foldr(f: Callable[[b, a], b], init: b, t: Sequence[a]) :: Right-associative fold of a
       sequence.
-    - foldl(f, init, t) :: Left-associative fold of a sequence.  The same as ~reduce~.
+    - foldl(f, init, t) :: Left-associative fold of an iterable.  The same as ~reduce~.
     - foldr1(f, t) :: A variant of foldr without base case.
     - foldl1(f, t) :: A variant of foldl without base case.
     - product(nums) :: Computes the product of the numbers.
@@ -53,20 +53,20 @@ The following functions, Nalude tries to implement:
                       results.
 ** Lists
 
-    - head(xs) :: Extract the first element of a sequence.
-    - last(xs) :: Extract the last element of a sequence.
+    - head(xs) :: Extract the first element of an iterable.
+    - last(xs) :: Extract the last element of an iterable.
     - null(xs) :: Test whether the sequence is empty.
     - Infinite lists
 
         + iterate(f, x) :: Yield a tuple of repeated applications of f to x.
         + repeat(x) :: Repeat x.
         + replicate(n, x) :: Return a list of length n with x the value of every element.
-        + cycle(xs) :: Tie a sequence to infinite circuler one.
+        + cycle(xs) :: Tie an iterable to infinite circuler one.
 
     - Sublists
 
         + tail(xs) :: Extract the elements after the head of a list.
-        + init(xs) :: Extract all the elements of a sequence except the last one.
+        + init(xs) :: Extract all the elements of an iterable except the last one.
         + take(n, xs) :: Return the first n elements of sequence xs.
         + drop(n, xs) :: Return the remaining elements of xs after the first n elements.
         + splitat(n, xs) :: Return a tuple where the first element is xs prefix of length n and
@@ -110,7 +110,7 @@ The following functions, Nalude tries to implement:
 **  Zip and Unzip
 
     - zipwith(f, *seqs) :: Zipwith is map(f, zip), but f accept separate args instead of tuple
-    - unzip(pairs) :: Transform a sequence of pairs into a tuple of sequence. (Not lazy)
+    - unzip(pairs) :: Transform an iterable of pairs into a tuple of sequence. (Not lazy)
 
 * Get Start
 

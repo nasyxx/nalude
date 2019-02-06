@@ -38,7 +38,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
 # Standard Library
-from typing import List, Tuple, Callable, Sequence, Generator
+from typing import List, Tuple, Callable, Iterable, Generator
 from functools import reduce
 
 # Local Packages
@@ -49,18 +49,19 @@ from .types import G, Num, Predicate, a, b, c
 # ----------------------------------------------------------------------
 
 
-def foldl(f: Callable[[b, a], b], init: b, t: Sequence[a]) -> b:
-    """Left-associative fold of a sequence."""
+def foldl(f: Callable[[b, a], b], init: b, t: Iterable[a]) -> b:
+    """Left-associative fold of an iterable."""
     return reduce(f, t, init)
 
 
-def foldr(f: Callable[[a, b], b], init: b, t: Sequence[a]) -> b:
-    """Right-associative fold of a sequence."""
-    return reduce(flip(f), reversed(t), init)
+def foldr(f: Callable[[a, b], b], init: b, t: Iterable[a]) -> b:
+    """Right-associative fold of an iterable."""
+    t_ = list(t)
+    return reduce(flip(f), reversed(t_), init)
 
 
-def foldl1(f: Callable[[a, a], a], t: Sequence[a]) -> a:
-    """Left-associative fold of a sequence.
+def foldl1(f: Callable[[a, a], a], t: Iterable[a]) -> a:
+    """Left-associative fold of an iterable.
 
     This is avariant of foldl without base case.
     """
@@ -68,22 +69,22 @@ def foldl1(f: Callable[[a, a], a], t: Sequence[a]) -> a:
     try:
         return reduce(f, t_, next(t_))
     except StopIteration:
-        raise IndexError("Sequence is Empty")
+        raise IndexError("Iterable is Empty")
 
 
-def foldr1(f: Callable[[a, a], a], t: Sequence[a]) -> a:
-    """Right-associative fold of a sequence.
+def foldr1(f: Callable[[a, a], a], t: Iterable[a]) -> a:
+    """Right-associative fold of an iterable.
 
     This is a variant of foldr without base case.
     """
-    t_ = iter(reversed(t))
+    t_ = iter(reversed(list(t)))
     try:
         return reduce(f, t_, next(t_))
     except StopIteration:
-        raise IndexError("Sequence is Empty")
+        raise IndexError("Iterable is Empty")
 
 
-def product(nums: Sequence[Num]) -> Num:
+def product(nums: Iterable[Num]) -> Num:
     """Computes the product of the numbers."""
     try:
         return foldl1(lambda b, a: a * b, nums)
@@ -96,35 +97,35 @@ def product(nums: Sequence[Num]) -> Num:
 # ----------------------------------------------------------------------
 
 
-def head(xs: Sequence[a]) -> a:
-    """Extract the first element of a sequence."""
+def head(xs: Iterable[a]) -> a:
+    """Extract the first element of an iterable."""
     try:
         return next(iter(xs))
     except StopIteration:
-        raise IndexError("Sequence is empty.")
+        raise IndexError("Iterable is empty.")
 
 
-def tail(xs: Sequence[a]) -> G:
-    """Extract the elements after the head of a sequence."""
+def tail(xs: Iterable[a]) -> G:
+    """Extract the elements after the head of an iterable."""
     try:
         ixs = iter(xs)
         next(ixs)
         for x in ixs:
             yield x
     except StopIteration:
-        raise IndexError("Sequence is empty.")
+        raise IndexError("Iterable is empty.")
 
 
-def last(xs: Sequence[a]) -> a:
-    """Extract the last element of a sequence."""
+def last(xs: Iterable[a]) -> a:
+    """Extract the last element of an iterable."""
     try:
-        return next(iter(reversed(xs)))
+        return next(iter(reversed(list(xs))))
     except StopIteration:
-        raise IndexError("Sequence is empty.")
+        raise IndexError("Iterable is empty.")
 
 
-def init(xs: Sequence[a]) -> G:
-    """Extract all the elements of a sequence except the last one."""
+def init(xs: Iterable[a]) -> G:
+    """Extract all the elements of an iterable except the last one."""
     ixs = iter(xs)
     try:
         x_ = next(ixs)
@@ -137,10 +138,10 @@ def init(xs: Sequence[a]) -> G:
             except StopIteration:
                 n = False
     except StopIteration:
-        raise IndexError("Sequence is empty.")
+        raise IndexError("Iterable is empty.")
 
 
-def null(l: Sequence[a]) -> bool:
+def null(l: Iterable[a]) -> bool:
     """Test whether the sequence is empty."""
     try:
         next(iter(l))
@@ -168,8 +169,8 @@ def replicate(n: int, x: a) -> G:
         yield x
 
 
-def cycle(xs: Sequence[a]) -> G:
-    """Tie a sequence to infinite circuler one."""
+def cycle(xs: Iterable[a]) -> G:
+    """Tie an iterable to infinite circuler one."""
     xs_ = []  # if x is a finite iterator, this can save the value.
     ixs = iter(xs)
     try:
@@ -177,7 +178,7 @@ def cycle(xs: Sequence[a]) -> G:
         yield x
         xs_.append(x)
     except StopIteration:
-        raise IndexError("Sequence is empty.")
+        raise IndexError("Iterable is empty.")
     for x in ixs:
         yield x
         xs_.append(x)
@@ -186,13 +187,13 @@ def cycle(xs: Sequence[a]) -> G:
             yield x
 
 
-def take(n: int, xs: Sequence[a]) -> G:
+def take(n: int, xs: Iterable[a]) -> G:
     """Return the first n elements of sequence xs."""
     for _, x in zip(range(n), xs):
         yield x
 
 
-def drop(n: int, xs: Sequence[a]) -> G:
+def drop(n: int, xs: Iterable[a]) -> G:
     """Return the remaining elements of xs after the first n elements."""
     ixs = iter(xs)
     try:
@@ -204,16 +205,17 @@ def drop(n: int, xs: Sequence[a]) -> G:
         pass
 
 
-def splitat(n: int, xs: Sequence[a]) -> Tuple[G, G]:
+def splitat(n: int, xs: Iterable[a]) -> Tuple[G, G]:
     """Equal to (take(n, xs), drop(n, xs)).
 
     Return a tuple where the first element is xs prefix of length n and second
     element is the remainder of the sequence xs.
     """
-    return (take(n, xs), drop(n, xs))
+    ixs = iter(xs)
+    return (i for i in list(take(n, ixs))), (i for i in ixs)
 
 
-def takewhile(p: Predicate, xs: Sequence[a]) -> G:
+def takewhile(p: Predicate, xs: Iterable[a]) -> G:
     """Return the longest prefix of xs of elements that satisfy predicate p."""
     for x in xs:
         if p(x):
@@ -222,7 +224,7 @@ def takewhile(p: Predicate, xs: Sequence[a]) -> G:
             break
 
 
-def dropwhile(p: Predicate, xs: Sequence[a]) -> G:
+def dropwhile(p: Predicate, xs: Iterable[a]) -> G:
     """Returns the suffix remaining after takewhile(p, xs)."""
     ixs = iter(xs)
     for x in ixs:
@@ -233,12 +235,12 @@ def dropwhile(p: Predicate, xs: Sequence[a]) -> G:
         yield x
 
 
-def span(p: Predicate, xs: Sequence[a]) -> Tuple[G, G]:
+def span(p: Predicate, xs: Iterable[a]) -> Tuple[G, G]:
     """Equal to (takewhile(p, xs), dropwhile(p, xs))."""
     return takewhile(p, xs), dropwhile(p, xs)
 
 
-def break_(p: Predicate, xs: Sequence[a]) -> Tuple[G, G]:
+def break_(p: Predicate, xs: Iterable[a]) -> Tuple[G, G]:
     """Equal to (takewhile(not_(p), xs), dropwhile(not_(p), xs))."""
     return takewhile(not_(p), xs), dropwhile(not_(p), xs)
 
@@ -289,7 +291,7 @@ def lines(s: str) -> List[str]:
     return s.splitlines()
 
 
-def unlines(xs: Sequence[str]) -> str:
+def unlines(xs: Iterable[str]) -> str:
     """The inverse operation of lines, append a newline to each."""
     return "\n".join(xs) + "\n"
 
@@ -300,7 +302,7 @@ def words(s: str) -> List[str]:
     return s.split()
 
 
-def unwords(xs: Sequence[str]) -> str:
+def unwords(xs: Iterable[str]) -> str:
     """The inverse operation of words, join words with space."""
     return " ".join(xs)
 
@@ -320,25 +322,25 @@ def not_(f: Callable[..., bool]) -> Callable[..., bool]:
     return _wrap
 
 
-def all_(p: Predicate, xs: Sequence[a]) -> bool:
+def all_(p: Predicate, xs: Iterable[a]) -> bool:
     """Determine whether all elements of the structure satisfy the p."""
     return all(map(p, xs))
 
 
-def any_(p: Predicate, xs: Sequence[a]) -> bool:
+def any_(p: Predicate, xs: Iterable[a]) -> bool:
     """Determine whether any element of the structure satisfies the p."""
     return any(map(p, xs))
 
 
-def concat(xss: Sequence[Sequence[a]]) -> G:
-    """The concatenation of all the elements of a container of Sequences."""
+def concat(xss: Iterable[Iterable[a]]) -> G:
+    """The concatenation of all the elements of a container of Iterables."""
     for xs in xss:
         for x in xs:
             yield x
 
 
 def concatmap(
-    f: Callable[[Sequence[a]], Sequence[b]], xss: Sequence[Sequence[a]]
+    f: Callable[[Iterable[a]], Iterable[b]], xss: Iterable[Iterable[a]]
 ) -> Generator[b, None, None]:
     """Map a function over all the elements of a container and concatenate the
     resulting lists."""
@@ -379,15 +381,15 @@ def uncurry(f: Callable[[a, b], c], ab: Tuple[a, b]) -> c:
 
 
 def zipwith(
-    f: Callable[[a], c], *seqs: Sequence[a]
+    f: Callable[[a], c], *seqs: Iterable[a]
 ) -> Generator[c, None, None]:
     """Zipwith is map(f, zip), but f accept separate args instead of tuple"""
     for zseq in zip(*seqs):
         yield f(*zseq)
 
 
-def unzip(pairs: Sequence[Tuple[a, ...]]) -> Tuple[Sequence[a], ...]:
-    """Transform a sequence of pairs into a tuple of sequence.
+def unzip(pairs: Iterable[Tuple[a, ...]]) -> Tuple[Iterable[a], ...]:
+    """Transform an iterable of pairs into a tuple of sequence.
 
     Note: Not lazy."""
     pairs = list(pairs)
