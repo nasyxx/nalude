@@ -39,6 +39,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 """
 __version__ = "0.1.0"
 # Local Packages
+from .extra import flatten
 from .nalude import (o, fst, id_, snd, all_, any_, drop, flip, head, init,
                      last, not_, null, span, tail, take, const, curry,
                      cycle, foldl, foldr, lines, until, unzip, words,
@@ -101,3 +102,6 @@ if __name__ == "__main__":
     # Zip and Unzip
     assert zipwith
     assert unzip
+
+    # Extra
+    assert flatten

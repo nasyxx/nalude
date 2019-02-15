@@ -41,10 +41,11 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 import unittest
 from typing import Tuple
 
+# Other Packages
 from nalude import (o, fst, id_, snd, all_, any_, drop, flip, head, init,
                     last, not_, null, span, tail, take, const, curry, cycle,
-                    foldl, foldr, lines, until, unzip, words, break_,
-                    concat, foldl1, foldr1, repeat, iterate, product,
+                    foldl, foldr, lines, until, unzip, words, break_, concat,
+                    foldl1, foldr1, repeat, flatten, iterate, product,
                     splitat, uncurry, unlines, unwords, zipwith, concatmap,
                     dropwhile, replicate, takewhile, __version__,)
 
@@ -270,6 +271,50 @@ class NaludeTest(unittest.TestCase):
         )
         self.assertEqual(
             unzip([(1, 2), (2, 3), (3, 4)]), ([1, 2, 3], [2, 3, 4])
+        )
+
+    def test_extra_flatten(self) -> None:
+        """Test extra flatten."""
+        self.assertEqual(
+            list(
+                flatten(
+                    [
+                        1,
+                        2,
+                        3,
+                        4,
+                        "123",
+                        [
+                            1,
+                            2,
+                            3,
+                            [
+                                dict(a=12),
+                                ["12", "12", (1, 2, 3), (i for i in range(3))],
+                            ],
+                        ],
+                    ]
+                )
+            ),
+            [
+                1,
+                2,
+                3,
+                4,
+                "123",
+                1,
+                2,
+                3,
+                dict(a=12),
+                "12",
+                "12",
+                1,
+                2,
+                3,
+                0,
+                1,
+                2,
+            ],
         )
 
 

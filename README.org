@@ -38,6 +38,9 @@ The following functions, Nalude tries to implement:
 6. Tuples
 7. Zip and Unzip
 
+At the same time, it also implements some functions which are only available in Python and are
+included in `extra`.
+
 * Structure of Functions
 
 ** Folds and Traversals
@@ -111,6 +114,10 @@ The following functions, Nalude tries to implement:
 
 + zipwith(f, *seqs) :: Zipwith is map(f, zip), but f accept separate args instead of tuple
 + unzip(pairs) :: Transform an iterable of pairs into a tuple of sequence. (Not lazy)
+
+** Extra
+
++ flatten(xs) :: Flatten iterables of iterable to a single iterable.
 
 * Get Start
 
