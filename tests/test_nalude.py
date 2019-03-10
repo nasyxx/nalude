@@ -41,7 +41,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 import unittest
 from typing import Tuple
 
-# Other Packages
+# Prelude
 from nalude import (o, fst, id_, snd, all_, any_, drop, flip, head, init,
                     last, not_, null, span, tail, take, const, curry, cycle,
                     foldl, foldr, lines, until, unzip, words, break_, concat,
@@ -275,6 +275,70 @@ class NaludeTest(unittest.TestCase):
 
     def test_extra_flatten(self) -> None:
         """Test extra flatten."""
+        self.assertEqual(
+            list(
+                flatten(
+                    [
+                        1,
+                        2,
+                        3,
+                        4,
+                        "123",
+                        [
+                            1,
+                            2,
+                            3,
+                            [
+                                dict(a=12),
+                                ["12", "12", (1, 2, 3), (i for i in range(3))],
+                            ],
+                        ],
+                    ],
+                    ignore=tuple(),
+                )
+            ),
+            [1, 2, 3, 4, "123", 1, 2, 3, "a", "12", "12", 1, 2, 3, 0, 1, 2],
+        )
+        self.assertEqual(
+            list(
+                flatten(
+                    [
+                        1,
+                        2,
+                        3,
+                        4,
+                        "123",
+                        [
+                            1,
+                            2,
+                            3,
+                            [
+                                dict(a=12),
+                                ["12", "12", (1, 2, 3), (i for i in range(3))],
+                            ],
+                        ],
+                    ],
+                    ignore=(dict, tuple),
+                )
+            ),
+            [
+                1,
+                2,
+                3,
+                4,
+                "123",
+                1,
+                2,
+                3,
+                {"a": 12},
+                "12",
+                "12",
+                (1, 2, 3),
+                0,
+                1,
+                2,
+            ],
+        )
         self.assertEqual(
             list(
                 flatten(

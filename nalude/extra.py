@@ -38,19 +38,19 @@ There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
 # Standard Library
-from typing import Iterable
+from typing import Type, Tuple, Iterable
 
 # Local Packages
 from .types import G, a
 
 
-def flatten(xs: a) -> G:
+def flatten(xs: a, *, ignore: Tuple[Type, ...] = (dict,)) -> G:
     """Flatten iterables of iterable to a single one.
 
     The true type of it is:: `T = Iterable[Untion[a, T]]` ."""
-    if not (isinstance(xs, (dict, str)) or not isinstance(xs, Iterable)):
+    if not (isinstance(xs, (str, *ignore)) or not isinstance(xs, Iterable)):
         for x in xs:
-            for x_ in flatten(x):
+            for x_ in flatten(x, ignore=ignore):
                 yield x_
     else:
         yield xs
