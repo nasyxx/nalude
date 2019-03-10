@@ -1,26 +1,27 @@
 # Table of Contents
 
-1.  [Prologue](#org9309e20)
-2.  [Nalude](#orgd146690)
-3.  [Structure of Functions](#org239a9a3)
-    1.  [Folds and Traversals](#org4359e86)
-    2.  [Lists](#org657598d)
-    3.  [Miscellaneous](#org31efb9c)
-    4.  [String](#org20152d2)
-    5.  [Specials](#orge3785b4)
-    6.  [Tuples](#org26d2935)
-    7.  [Zip and Unzip](#org139332a)
-    8.  [Extra](#orgd58c472)
-4.  [Get Start](#org5740bab)
-    1.  [Install](#orge5fc1bc)
-5.  [Epoligue](#orgc60fefa)
-    1.  [History](#org19b33c7)
-        1.  [Version 0.2.0](#org2786df5)
-        2.  [Version 0.1.0](#orgd86b472)
+1.  [Prologue](#org8b6bf34)
+2.  [Nalude](#org0812938)
+3.  [Structure of Functions](#org658c0e2)
+    1.  [Folds and Traversals](#orgebe257d)
+    2.  [Lists](#org8fd809b)
+    3.  [Miscellaneous](#orgd3b3bf1)
+    4.  [String](#org8147070)
+    5.  [Specials](#org2de95e8)
+    6.  [Tuples](#orge6105ca)
+    7.  [Zip and Unzip](#orgcdca5f7)
+    8.  [Extra](#org5b1da39)
+4.  [Get Start](#orgccf98f8)
+    1.  [Install](#org1d1b386)
+5.  [Epoligue](#orgd300cef)
+    1.  [History](#org1d83dae)
+        1.  [Version 0.3.0](#orga174a69)
+        2.  [Version 0.2.0](#orga9ce38e)
+        3.  [Version 0.1.0](#orgad971e1)
 
 
 
-<a id="org9309e20"></a>
+<a id="org8b6bf34"></a>
 
 # Prologue
 
@@ -29,7 +30,7 @@ I like Haskell, also hope some of the prelude functions in Haskell can be used i
 Wish you enjoy coding with nalude.
 
 
-<a id="orgd146690"></a>
+<a id="org0812938"></a>
 
 # Nalude
 
@@ -54,12 +55,12 @@ At the same time, it also implements some functions which are only available in 
 included in \`extra\`.
 
 
-<a id="org239a9a3"></a>
+<a id="org658c0e2"></a>
 
 # Structure of Functions
 
 
-<a id="org4359e86"></a>
+<a id="orgebe257d"></a>
 
 ## Folds and Traversals
 
@@ -74,7 +75,7 @@ included in \`extra\`.
     the results.
 
 
-<a id="org657598d"></a>
+<a id="org8fd809b"></a>
 
 ## Lists
 
@@ -101,7 +102,7 @@ included in \`extra\`.
             dropwhile(not\_(p), xs)).
 
 
-<a id="org31efb9c"></a>
+<a id="orgd3b3bf1"></a>
 
 ## Miscellaneous
 
@@ -112,7 +113,7 @@ included in \`extra\`.
 -   **until(p, f, x):** Yield the result of applying f until p holds.
 
 
-<a id="org20152d2"></a>
+<a id="org8147070"></a>
 
 ## String
 
@@ -122,7 +123,7 @@ included in \`extra\`.
 -   **unwords(xs):** The inverse operation of words, join words with space.
 
 
-<a id="orge3785b4"></a>
+<a id="org2de95e8"></a>
 
 ## Specials
 
@@ -134,7 +135,7 @@ included in \`extra\`.
     resulting lists.
 
 
-<a id="org26d2935"></a>
+<a id="orge6105ca"></a>
 
 ## Tuples
 
@@ -144,7 +145,7 @@ included in \`extra\`.
 -   **uncurry(f, ab@(a, b)):** Converts a curried function to a function on pairs.
 
 
-<a id="org139332a"></a>
+<a id="orgcdca5f7"></a>
 
 ## Zip and Unzip
 
@@ -152,36 +153,45 @@ included in \`extra\`.
 -   **unzip(pairs):** Transform an iterable of pairs into a tuple of sequence. (Not lazy)
 
 
-<a id="orgd58c472"></a>
+<a id="org5b1da39"></a>
 
 ## Extra
 
--   **flatten(xs):** Flatten iterables of iterable to a single iterable.
+-   **flatten(xs,\*,ignore=(dict,)):** Flatten iterables of iterable to a single iterable.  It will
+    ignore instances in `ignore` tuple.
 
 
-<a id="org5740bab"></a>
+<a id="orgccf98f8"></a>
 
 # Get Start
 
 
-<a id="orge5fc1bc"></a>
+<a id="org1d1b386"></a>
 
 ## Install
 
     pip install nalude
 
 
-<a id="orgc60fefa"></a>
+<a id="orgd300cef"></a>
 
 # Epoligue
 
 
-<a id="org19b33c7"></a>
+<a id="org1d83dae"></a>
 
 ## History
 
 
-<a id="org2786df5"></a>
+<a id="orga174a69"></a>
+
+### Version 0.3.0
+
+-   **Data:** <span class="timestamp-wrapper"><span class="timestamp">&lt;Sun Mar 10, 2019&gt;</span></span>
+-   **Add:** -   Custom ignore when flatten iterable.
+
+
+<a id="orga9ce38e"></a>
 
 ### Version 0.2.0
 
@@ -189,7 +199,7 @@ included in \`extra\`.
 -   **Add:** -   flatten in extra.
 
 
-<a id="orgd86b472"></a>
+<a id="orgad971e1"></a>
 
 ### Version 0.1.0
 

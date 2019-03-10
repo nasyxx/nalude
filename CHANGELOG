@@ -1,3 +1,9 @@
+* Version 0.3.0
+
++ Data :: <2019-03-10 Sun>
++ Add ::
+    - Custom ignore when flatten iterable.
+
 * Version 0.2.0
 
 + Data :: <2019-02-15 Fri>
